@@ -1,3 +1,4 @@
 [submodule "bamboo/bamboo-core"]
 	path = bamboo/bamboo-core
 	url = https://github.com/sinh-trusted/bamboo-core.git
+	branch = snapshot-20260223
