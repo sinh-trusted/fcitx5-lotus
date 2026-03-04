@@ -30,7 +30,7 @@ BuildRequires:  libgudev-1_0-devel
 %{?systemd_requires}
 
 Requires:       fcitx5
-Requires:       libinput
+Requires:       libinput10
 Requires:       hicolor-icon-theme
 
 %description

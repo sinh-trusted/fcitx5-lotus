@@ -293,6 +293,13 @@ namespace fcitx {
          */
         void setMode(LotusMode mode, InputContext* ic);
 
+        /**
+         * @brief Get name of current program
+         * @param ic Current input context.
+         * @return Name of current program
+         */
+        std::string getProgramName(InputContext* ic);
+
       private:
         Instance*                                        instance_;
         lotusConfig                                      config_;

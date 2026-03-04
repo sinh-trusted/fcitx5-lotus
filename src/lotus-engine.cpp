@@ -395,7 +395,7 @@ namespace fcitx {
         if (ic->capabilityFlags().test(CapabilityFlag::Preedit))
             instance_->inputContextManager().setPreeditEnabledByDefault(true);
 
-        std::string appName = ic->program();
+        std::string appName = getProgramName(ic);
         LotusMode   targetMode;
 
         if (!appRules_.empty() && appRules_.count(appName)) {
@@ -590,9 +590,7 @@ namespace fcitx {
         }
 
         if (!keyEvent.isRelease() && !config_.modeMenuKey->empty() && keyEvent.key().checkKeyList(*config_.modeMenuKey)) {
-            currentConfigureApp_ = ic->program();
-            if (currentConfigureApp_.empty())
-                currentConfigureApp_ = "unknown-app";
+            currentConfigureApp_ = getProgramName(ic);
             g_mouse_clicked.store(false, std::memory_order_relaxed);
             showAppModeMenu(ic);
             keyEvent.filterAndAccept();
@@ -898,4 +896,10 @@ namespace fcitx {
         }
     }
 
+    std::string LotusEngine::getProgramName(InputContext* ic) {
+        std::string programName = ic->program();
+        if (programName.empty())
+            programName = "unknown-app";
+        return programName;
+    }
 } // namespace fcitx
