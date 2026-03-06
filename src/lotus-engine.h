@@ -179,141 +179,12 @@ namespace fcitx {
         uintptr_t macroTable() const;
 
         /**
-         * @brief Refreshes the bamboo engine with current settings.
-         */
-        void refreshEngine();
-
-        /**
-         * @brief Refreshes engine options from configuration.
-         */
-        void refreshOption();
-
-        /**
-         * @brief Saves current configuration to disk.
-         */
-        void saveConfig() {
-            safeSaveAsIni(config_, "conf/lotus.conf");
-        }
-
-        /**
-         * @brief Updates the mode action UI.
-         * @param ic Current input context.
-         */
-        void updateModeAction(InputContext* ic);
-
-        /**
-         * @brief Updates the spell check action UI.
-         * @param ic Current input context.
-         */
-        void updateSpellAction(InputContext* ic);
-
-        /**
-         * @brief Updates the macro action UI.
-         * @param ic Current input context.
-         */
-        void updateMacroAction(InputContext* ic);
-
-        /**
-         * @brief Updates the capitalize macro action UI.
-         * @param ic Current input context.
-         */
-        void updateCapitalizeMacroAction(InputContext* ic);
-
-        /**
-         * @brief Updates the auto non-VN restore action UI.
-         * @param ic Current input context.
-         */
-        void updateAutoNonVnRestoreAction(InputContext* ic);
-
-        /**
-         * @brief Updates the modern style action UI.
-         * @param ic Current input context.
-         */
-        void updateModernStyleAction(InputContext* ic);
-
-        /**
-         * @brief Updates the free marking action UI.
-         * @param ic Current input context.
-         */
-        void updateFreeMarkingAction(InputContext* ic);
-
-        /**
-         * @brief Updates the dd free style action UI.
-         * @param ic Current input context.
-         */
-        void updateDdFreeStyleAction(InputContext* ic);
-
-        /**
-         * @brief Updates the fix uinput with ACK action UI.
-         * @param ic Current input context.
-         */
-        void updateFixUinputWithAckAction(InputContext* ic);
-
-        /**
-         * @brief Updates the Lotus icons toggle action UI.
-         * @param ic Current input context.
-         */
-        void updateLotusIconsAction(InputContext* ic);
-
-        /**
-         * @brief Updates the input method action UI.
-         * @param ic Current input context.
-         */
-        void updateInputMethodAction(InputContext* ic);
-
-        /**
-         * @brief Updates the charset action UI.
-         * @param ic Current input context.
-         */
-        void updateCharsetAction(InputContext* ic);
-
-        /**
-         * @brief Populates input method names from bamboo core.
-         */
-        void populateConfig();
-
-        /**
-         * @brief Loads application-specific mode rules.
-         */
-        void loadAppRules();
-
-        /**
-         * @brief Saves application-specific mode rules.
-         */
-        void saveAppRules();
-
-        /**
-         * @brief Shows the application mode selection menu.
-         * @param ic Current input context.
-         */
-        void showAppModeMenu(InputContext* ic);
-
-        /**
-         * @brief Closes the application mode selection menu.
-         */
-        void closeAppModeMenu();
-
-        /**
          * @brief Gets the emoji loader.
          * @return Reference to emoji loader instance.
          */
         EmojiLoader& emojiLoader() {
             return emojiLoader_;
         }
-
-        /**
-         * @brief Sets the current input mode.
-         * @param mode The mode to set.
-         * @param ic Current input context.
-         */
-        void setMode(LotusMode mode, InputContext* ic);
-
-        /**
-         * @brief Get name of current program
-         * @param ic Current input context.
-         * @return Name of current program
-         */
-        std::string getProgramName(InputContext* ic);
 
       private:
         Instance*                                        instance_;
@@ -354,6 +225,104 @@ namespace fcitx {
         std::string                                      currentConfigureApp_;
         LotusMode                                        globalMode_;
         EmojiLoader                                      emojiLoader_;
+
+        /**
+         * @brief Refreshes the bamboo engine with current settings.
+         */
+        void refreshEngine();
+
+        /**
+         * @brief Refreshes engine options from configuration.
+         */
+        void refreshOption();
+
+        /**
+         * @brief Saves current configuration to disk.
+         */
+        void saveConfig() {
+            safeSaveAsIni(config_, "conf/lotus.conf");
+        }
+
+        /**
+         * @brief Initialize toggle action
+         * @param action The action to initialize
+         * @param option The option to toggle
+         * @param actionId The action ID
+         * @param iconName The icon name
+         * @param textLong The long text
+         * @param textOnOff The text to display when on/off
+         * @param uiManager The UI manager
+         * 
+        */
+        void initToggleAction(std::unique_ptr<SimpleAction>& action, Option<bool>& option, const std::string& actionId, const std::string& iconName, const std::string& textLong,
+                              const std::string& textOnOff, UserInterfaceManager& uiManager);
+
+        /**
+         * @brief Update toggle action
+         * @param ic The input context
+         * @param action The action to update
+         * @param option The option to toggle
+         * @param textOnOff The text to display when on/off
+         */
+        void updateAction(InputContext* ic, std::unique_ptr<SimpleAction>& action, Option<bool>& option, const std::string& textOnOff);
+
+        /**
+         * @brief Updates the mode action UI.
+         * @param ic Current input context.
+         */
+        void updateModeAction(InputContext* ic);
+
+        /**
+         * @brief Updates the input method action UI.
+         * @param ic Current input context.
+         */
+        void updateInputMethodAction(InputContext* ic);
+
+        /**
+         * @brief Updates the charset action UI.
+         * @param ic Current input context.
+         */
+        void updateCharsetAction(InputContext* ic);
+
+        /**
+         * @brief Populates input method names from bamboo core.
+         */
+        void populateConfig();
+
+        /**
+         * @brief Loads application-specific mode rules.
+         */
+        void loadAppRules();
+
+        /**
+         * @brief Saves application-specific mode rules.
+         */
+        void saveAppRules();
+
+        /**
+         * @brief Shows the application mode selection menu.
+         * @param ic Current input context.
+         */
+        void showAppModeMenu(InputContext* ic);
+
+        /**
+         * @brief Closes the application mode selection menu.
+         */
+        void closeAppModeMenu();
+
+        /**
+         * @brief Sets the current input mode.
+         * @param mode The mode to set.
+         * @param ic Current input context.
+         */
+        void setMode(LotusMode mode, InputContext* ic);
+
+        /**
+         * @brief Get name of current program
+         * @param ic Current input context.
+         * @return Name of current program
+         */
+        std::string getProgramName(InputContext* ic);
     };
 
     /**
