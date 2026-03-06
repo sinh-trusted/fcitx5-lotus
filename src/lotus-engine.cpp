@@ -16,6 +16,7 @@
 #include "lotus-version.h"
 
 #include <algorithm>
+#include <cctype>
 #include <fcitx-utils/i18n.h>
 #include <fcntl.h>
 
@@ -364,8 +365,8 @@ namespace fcitx {
         state->waitAck_ = false;
         if (*config_.fixUinputWithAck) {
             if (targetMode == LotusMode::Uinput || targetMode == LotusMode::UinputHC || targetMode == LotusMode::Smooth) {
+                std::transform(appName.begin(), appName.end(), appName.begin(), ::tolower);
                 for (const auto& ackApp : ack_apps) {
-                    std::transform(appName.begin(), appName.end(), appName.begin(), ::tolower);
                     if (appName.find(ackApp) != std::string::npos) {
                         state->waitAck_ = true;
                         break;
