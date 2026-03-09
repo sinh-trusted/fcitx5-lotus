@@ -166,7 +166,7 @@ namespace fcitx {
     }
 
     void LotusEngine::updateAction(InputContext* ic, std::unique_ptr<SimpleAction>& action, Option<bool>& option, const std::string& textOnOff) {
-        action->setShortText(textOnOff + (option.value() ? " ✅" : " ❌"));
+        action->setShortText((option.value() ? "✔ " : "✖ ") + textOnOff);
         if (ic) {
             action->update(ic);
         }
