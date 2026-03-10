@@ -72,7 +72,7 @@ namespace fcitx::lotus {
          */
         void onLoadPresetClicked();
 
-      private:
+      private: //NOLINT
         QTableWidget*                                  tableWidget_;
         QLineEdit*                                     inputKey_;
         QComboBox*                                     comboAction_;

@@ -16,12 +16,15 @@
 #include <QLabel>
 #include <QMessageBox>
 
+// NOLINTBEGIN(cppcoreguidelines-owning-memory)
 namespace fcitx::lotus {
-    KeymapEditor::KeymapEditor(QWidget* parent) : FcitxQtConfigUIWidget(parent) {
+    KeymapEditor::KeymapEditor(QWidget* parent) :
+        FcitxQtConfigUIWidget(parent), tableWidget_(new QTableWidget(0, 2, this)), inputKey_(new QLineEdit(this)), comboAction_(new QComboBox(this)),
+        comboPreset_(new QComboBox(this)) {
         auto* mainLayout = new QVBoxLayout(this);
 
         auto* presetLayout = new QHBoxLayout();
-        comboPreset_       = new QComboBox(this);
+
         for (const auto& preset : presets_) {
             comboPreset_->addItem(preset.first);
         }
@@ -40,11 +43,9 @@ namespace fcitx::lotus {
         mainLayout->addWidget(line);
 
         auto* addLayout = new QHBoxLayout();
-        inputKey_       = new QLineEdit(this);
         inputKey_->setPlaceholderText(_("Key (Example: s)"));
         inputKey_->setMaxLength(1);
 
-        comboAction_ = new QComboBox(this);
         for (const auto& action : bambooActions_) {
             comboAction_->addItem(action.second, action.first);
         }
@@ -55,7 +56,6 @@ namespace fcitx::lotus {
         addLayout->addWidget(btnAdd_);
         mainLayout->addLayout(addLayout);
 
-        tableWidget_ = new QTableWidget(0, 2, this);
         tableWidget_->setHorizontalHeaderLabels({_("Key"), _("Action")});
         tableWidget_->horizontalHeader()->setStretchLastSection(true);
         tableWidget_->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -69,7 +69,7 @@ namespace fcitx::lotus {
         connect(btnAdd_, &QPushButton::clicked, this, &KeymapEditor::onAddClicked);
         connect(btnRemove_, &QPushButton::clicked, this, &KeymapEditor::onRemoveClicked);
         connect(btnLoadPreset_, &QPushButton::clicked, this, &KeymapEditor::onLoadPresetClicked);
-        load();
+        // load();
     }
 
     QString KeymapEditor::title() {
@@ -88,7 +88,7 @@ namespace fcitx::lotus {
         for (int i = 0; i < tableWidget_->rowCount(); ++i) {
             if (tableWidget_->item(i, 0)->text() == key) {
                 auto* cellCombo = qobject_cast<QComboBox*>(tableWidget_->cellWidget(i, 1));
-                if (cellCombo) {
+                if (cellCombo != nullptr) {
                     cellCombo->setCurrentIndex(comboAction_->currentIndex());
                 }
                 emit changed(true);
@@ -123,8 +123,7 @@ namespace fcitx::lotus {
     void KeymapEditor::onLoadPresetClicked() {
         QString                     presetName = comboPreset_->currentText();
 
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(
+        QMessageBox::StandardButton reply = QMessageBox::question(
             this, _("Confirm"), _("This operation will delete all existing keys on the current keymap and replace them with the input method ") + presetName + _(". Are you sure?"),
             QMessageBox::Yes | QMessageBox::No);
 
@@ -207,7 +206,7 @@ namespace fcitx::lotus {
             QString key = tableWidget_->item(i, 0)->text();
 
             auto*   cellCombo = qobject_cast<QComboBox*>(tableWidget_->cellWidget(i, 1));
-            if (!cellCombo)
+            if (cellCombo == nullptr)
                 continue;
 
             QString     action = cellCombo->currentData().toString();
@@ -231,3 +230,4 @@ namespace fcitx::lotus {
         emit changed(false);
     }
 } // namespace fcitx::lotus
+//NOLINTEND(cppcoreguidelines-owning-memory)

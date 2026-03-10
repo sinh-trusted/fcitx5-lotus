@@ -15,6 +15,7 @@
 #ifndef _FCITX5_LOTUS_CONFIG_H_
 #define _FCITX5_LOTUS_CONFIG_H_
 
+#include <cstdint>
 #include <fcitx-config/configuration.h>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/stringutils.h>
@@ -24,7 +25,7 @@ namespace fcitx {
     /**
      * @brief Operating modes for the Lotus input method.
      */
-    enum class LotusMode {
+    enum class LotusMode : std::uint8_t {
         Off             = 0,
         Smooth          = 1,
         Uinput          = 2,
@@ -109,7 +110,7 @@ namespace fcitx {
         }
 
       protected:
-        std::vector<std::string> list_;
+        std::vector<std::string> list_; // NOLINT
     };
 
     /**
@@ -170,9 +171,9 @@ namespace fcitx {
          * @brief Dumps description (no-op).
          * @param config Unused.
          */
-        void dumpDescription(RawConfig&) const {}
+        void dumpDescription(RawConfig& /*unused*/) const {}
 
-      protected:
+      private:
         const InputMethodOption* option_;
     };
 

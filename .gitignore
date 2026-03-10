@@ -14,6 +14,7 @@ XF86keysym.h
 keysymdef.h
 *~
 !.clang-format
+!.clang-tidy
 
 # CMake build files
 CMakeCache.txt
