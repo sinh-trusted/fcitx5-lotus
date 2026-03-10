@@ -15,15 +15,9 @@
 #ifndef _FCITX5_LOTUS_CONFIG_H_
 #define _FCITX5_LOTUS_CONFIG_H_
 
-#include <algorithm>
 #include <fcitx-config/configuration.h>
-#include <fcitx-config/option.h>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/stringutils.h>
-#include <string>
-#include <string_view>
-#include <unordered_map>
-#include <vector>
 
 namespace fcitx {
 
@@ -202,21 +196,21 @@ namespace fcitx {
         Option<std::string, InputMethodConstrain, DefaultMarshaller<std::string>, InputMethodAnnotation> inputMethod{
             this, "InputMethod", _("Input Method"), "Telex", InputMethodConstrain(&inputMethod), {}, InputMethodAnnotation()};
         OptionWithAnnotation<std::string, StringListAnnotation> outputCharset{this, "OutputCharset", _("Output Charset"), "Unicode", {}, {}, StringListAnnotation()};
-        Option<bool> spellCheck{this, "SpellCheck", _("Enable spell check"), true}; Option<bool> macro{this, "Macro", _("Enable Macro"), true};
+        Option<bool> spellCheck{this, "SpellCheck", _("Enable Spell Check"), true}; Option<bool> macro{this, "Macro", _("Enable Macro"), true};
         Option<bool>                                                                             capitalizeMacro{this, "CapitalizeMacro", _("Capitalize Macro"), true};
-        Option<bool> autoNonVnRestore{this, "AutoNonVnRestore", _("Auto restore keys with invalid words"), true};
-        Option<bool> modernStyle{this, "ModernStyle", _("Use oà, _uý (instead of òa, úy)"), true};
-        Option<bool> freeMarking{this, "FreeMarking", _("Allow type with more freedom"), true};
-        Option<bool> ddFreeStyle{this, "DdFreeStyle", _("Allow dd to produce đ when Auto non-VN restore is On"), true};
-        Option<bool> fixUinputWithAck{this, "FixUinputWithAck", _("Fix uinput mode with ack"), false};
-        Option<bool> useLotusIcons{this, "UseLotusIcons", _("Use Lotus status icons"), false};
+        Option<bool> autoNonVnRestore{this, "AutoNonVnRestore", _("Auto Restore Keys With Invalid Words"), true};
+        Option<bool> modernStyle{this, "ModernStyle", _("Use oà, uý (Instead Of òa, úy)"), true};
+        Option<bool> freeMarking{this, "FreeMarking", _("Allow Type With More Freedom"), true};
+        Option<bool> ddFreeStyle{this, "DdFreeStyle", _("Allow dd To Produce đ When Auto Restore Keys With Invalid Words Is On"), true};
+        Option<bool> fixUinputWithAck{this, "FixUinputWithAck", _("Fix Uinput Mode With Ack"), false};
+        Option<bool> useLotusIcons{this, "UseLotusIcons", _("Use Lotus Status Icons"), false};
 #ifdef ENABLE_KEYMAP_EDITOR
         ExternalOption customKeymapUI{this, "CustomKeymapUI", _("Custom Keymap"), "fcitx://config/addon/lotus/custom_keymap"};
 #else
         SubConfigOption customKeymap{this, "CustomKeymap", _("Custom Keymap"), "fcitx://config/addon/lotus/custom_keymap"};
 #endif
         KeyListOption modeMenuKey{
-            this, "ModeMenuKey", _("Mode menu hotkey"), {Key("grave")}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};);
+            this, "ModeMenuKey", _("Mode Menu Hotkey"), {Key("grave")}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};);
 
 } // namespace fcitx
 

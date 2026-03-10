@@ -16,14 +16,12 @@
 #define _FCITX5_LOTUS_STATE_H_
 
 #include "lotus.h"
-#include "emoji.h"
+#include "emoji_data.h"
 #include "lotus-utils.h"
-#include <fcitx-utils/key.h>
+
 #include <fcitx/inputcontext.h>
-#include <fcitx/inputcontextproperty.h>
+
 #include <atomic>
-#include <string>
-#include <vector>
 
 struct EmojiEntry;
 
@@ -60,6 +58,52 @@ namespace fcitx {
          * @brief Applies current options to the engine.
          */
         void setOption();
+
+        /**
+         * @brief Main key event handler.
+         * @param keyEvent The key event to process.
+         */
+        void keyEvent(KeyEvent& keyEvent);
+
+        /**
+         * @brief Resets the input state.
+         */
+        void reset();
+
+        /**
+         * @brief Commits the current buffer.
+         */
+        void commitBuffer();
+
+        /**
+         * @brief Clears all internal buffers.
+         */
+        void clearAllBuffers();
+
+        /**
+         * @brief Checks if history buffer is empty.
+         * @return True if no history.
+         */
+        bool isEmptyHistory();
+        friend class EmojiCandidateWord;
+        friend class LotusEngine;
+
+      private:
+        static constexpr size_t MAX_BUFFERED_KEYS = 50;
+
+        LotusEngine*            engine_;
+        InputContext*           ic_;
+        CGoObject               lotusEngine_;
+        std::string             oldPreBuffer_;
+        std::string             history_;
+        size_t                  expected_backspaces_     = 0;
+        size_t                  current_backspace_count_ = 0;
+        std::string             pending_commit_string_;
+        std::atomic<int>        current_thread_id_{0};
+        std::string             emojiBuffer_;
+        std::vector<EmojiEntry> emojiCandidates_;
+        bool                    waitAck_ = false;
+        std::vector<KeyEntry>   buffered_keys_; ///< Keystrokes buffered during replacement
 
         /**
          * @brief Connects to the uinput server.
@@ -161,33 +205,6 @@ namespace fcitx {
         void handleSurroundingText(KeyEvent& keyEvent, KeySym currentSym);
 
         /**
-         * @brief Main key event handler.
-         * @param keyEvent The key event to process.
-         */
-        void keyEvent(KeyEvent& keyEvent);
-
-        /**
-         * @brief Resets the input state.
-         */
-        void reset();
-
-        /**
-         * @brief Commits the current buffer.
-         */
-        void commitBuffer();
-
-        /**
-         * @brief Clears all internal buffers.
-         */
-        void clearAllBuffers();
-
-        /**
-         * @brief Checks if history buffer is empty.
-         * @return True if no history.
-         */
-        bool isEmptyHistory();
-
-        /**
          * @brief Replays keystrokes buffered during replacement.
          *
          * When is_deleting_ is true, non-special keystrokes are buffered
@@ -195,26 +212,6 @@ namespace fcitx {
          * replacement completes.
          */
         void replayBufferedKeys();
-
-        friend class EmojiCandidateWord;
-        friend class LotusEngine;
-
-      private:
-        static constexpr size_t MAX_BUFFERED_KEYS = 50;
-
-        LotusEngine*            engine_;
-        InputContext*           ic_;
-        CGoObject               lotusEngine_;
-        std::string             oldPreBuffer_;
-        std::string             history_;
-        size_t                  expected_backspaces_     = 0;
-        size_t                  current_backspace_count_ = 0;
-        std::string             pending_commit_string_;
-        std::atomic<int>        current_thread_id_{0};
-        std::string             emojiBuffer_;
-        std::vector<EmojiEntry> emojiCandidates_;
-        bool                    waitAck_ = false;
-        std::vector<KeyEntry>   buffered_keys_; ///< Keystrokes buffered during replacement
     };
 
 } // namespace fcitx

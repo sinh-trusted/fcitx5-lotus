@@ -487,25 +487,28 @@ Thêm dòng sau vào file `~/.config/kanata/kanata.kbd`
 
 - **Truy cập:** Nhấp chuột phải vào biểu tượng Lotus trên system tray để mở tuỳ chỉnh.
 
-| Tùy chọn                | Mô tả                                                                                                            | Mặc định        |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------- |
-| **Typing Mode**         | Chọn chế độ gõ.                                                                                                  | Uinput (Smooth) |
-| **Input Method**        | Chọn kiểu gõ.                                                                                                    | Telex           |
-| **Charset**             | Chọn bảng mã.                                                                                                    | Unicode         |
-| **Spell Check**         | Bật/tắt kiểm tra lỗi chính tả tiếng Việt.                                                                        | Bật             |
-| **Macro**               | Bật/tắt gõ tắt.                                                                                                  | Bật             |
-| **Capitalize Macro**    | Bật/tắt gõ tắt chữ hoa.                                                                                          | Bật             |
-| **Auto non-VN restore** | Bật/tắt tự động khôi phục với từ không phải tiếng Việt.                                                          | Bật             |
-| **Modern Style**        | Bật/tắt kiểu đặt dấu thanh hiện đại _(ví dụ: oà, *uý thay vì òa, *úy)_.                                          | Bật             |
-| **Free Marking**        | Bật/tắt bỏ dấu tự do.                                                                                            | Bật             |
-| **Dd Free Style**       | Bật/tắt cho phép "dd" tạo "đ" khi tuỳ chọn _Auto non-VN restore_ được bật.                                       | Bật             |
-| **Fix Uinput with ack** | Bật/tắt sửa lỗi chế độ Uinput với ack.<br/>Nên bật khi sử dụng các ứng dụng Chromium (Chrome, Brave, Edge, ...). | Tắt             |
-| **Lotus Icons**         | Bật/tắt sử dụng icon Lotus thay vì icon mặc định V E.                                                            | Tắt             |
+| Tùy chọn                | Mô tả                                                   | Mặc định |
+| :---------------------- | :------------------------------------------------------ | :------- |
+| **Charset**             | Chọn bảng mã.                                           | Unicode  |
+| **Spell Check**         | Bật/tắt kiểm tra lỗi chính tả tiếng Việt.               | Bật      |
+| **Macro**               | Bật/tắt gõ tắt.                                         | Bật      |
+| **Capitalize Macro**    | Bật/tắt gõ tắt chữ hoa.                                 | Bật      |
+| **Auto non-VN restore** | Bật/tắt tự động khôi phục với từ không phải tiếng Việt. | Bật      |
 
 - Hoặc có thể nhấp chuột phải vào biểu tượng Lotus trên system tray -> **Input Method Settings** -> Chọn **Lotus** -> **Configure** (biểu tượng bánh răng ở giữa của giao diện _Fcitx Configuration_) để tuỳ chỉnh chi tiết một số tuỳ chọn khác, như:
   - Gõ tắt/ Macro: nhấn vào biểu tượng bánh răng bên cạnh dòng chọn _Input Method_ để mở giao diện thêm bớt macro cho kiểu gõ hiện tại. **Lưu ý:** các từ gõ tắt chỉ có hiệu lực với kiểu gõ được chọn, nếu muốn áp dụng cho kiểu gõ khác, hãy đổi kiểu gõ và thêm từ gõ tắt từ đầu như trên.
   - Keymap tuỳ chỉnh: nhấn vào biểu tượng bánh răng trên dòng _Custom Keymap_ để mở giao diện tuỳ chỉnh keymap, bạn có thể nhập keymap từ một kiểu gõ có sẵn, hoặc tự tạo keymap của riêng mình. Sau khi tuỳ chỉnh, chọn kiểu gõ **Custom** để áp dụng keymap tuỳ chỉnh.
   - Phím tắt cho menu chế độ gõ: mặc định, menu này sử dụng phím `` ` `` để mở menu ở tất cả các ứng dụng, nếu công việc của bạn thường xuyên dùng phím này hoặc đơn giản bạn chỉ không thích phím `` ` ``, nhấn vào nút chọn phím tắt bên cạnh tuỳ chọn _Mode menu hotkey_ để nhập phím tắt mà bạn muốn. Bạn cũng có thể nhấn nút `+` để tạo thêm phím tắt mới nếu muốn.
+  - Một số tuỳ chọn đã được đưa từ menu taskbar vào Fcitx5 configuration để đơn giản hoá:
+    | Tùy chọn | Mô tả | Mặc định |
+    | :---------------------- | :------------------------------------------------------ | :------- |
+    | **Mode** | Chọn chế độ gõ. | Uinput (Smooth) |
+    | **Input Method** | Chọn kiểu gõ. | Telex |
+    | **Use oà, uý (Instead Of òa, úy)** | Bật/tắt kiểu đặt dấu thanh hiện đại _(ví dụ: oà, *uý thay vì òa, *úy)_. | Bật |
+    | **Allow Type With More Freedom** | Bật/tắt bỏ dấu tự do. | Bật |
+    | **Allow dd To Produce đ When Auto Restore Keys With Invalid Words Is On** | Bật/tắt cho phép "dd" tạo "đ" khi tuỳ chọn _Auto non-VN restore_ được bật. | Bật |
+    | **Fix Uinput Mode With Ack** | Bật/tắt sửa lỗi chế độ Uinput với ack.<br/>Nên bật khi sử dụng các ứng dụng Chromium (Chrome, Brave, Edge, ...). | Tắt |
+    | **Use Lotus Status Icons** | Bật/tắt sử dụng icon Lotus thay vì icon mặc định V E. | Tắt |
 
 ### 2. Menu chuyển chế độ gõ
 
@@ -627,7 +630,7 @@ Cảm ơn những con người tuyệt vời ([chú thích emoji](https://allcon
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/nhktmdzhg"><img src="https://avatars.githubusercontent.com/u/57983253?v=4?s=100" width="100px;" alt="Nguyen Hoang Ky"/><br /><sub><b>Nguyen Hoang Ky</b></sub></a><br /><a href="#blog-nhktmdzhg" title="Blogposts">📝</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=nhktmdzhg" title="Code">💻</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=nhktmdzhg" title="Documentation">📖</a> <a href="#projectManagement-nhktmdzhg" title="Project Management">📆</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/pulls?q=is%3Apr+reviewed-by%3Anhktmdzhg" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hthienloc"><img src="https://avatars.githubusercontent.com/u/148019203?v=4?s=100" width="100px;" alt="Huỳnh Thiện Lộc"/><br /><sub><b>Huỳnh Thiện Lộc</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues?q=author%3Ahthienloc" title="Bug reports">🐛</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=hthienloc" title="Documentation">📖</a> <a href="#design-hthienloc" title="Design">🎨</a> <a href="#translation-hthienloc" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/justanoobcoder"><img src="https://avatars.githubusercontent.com/u/57614330?v=4?s=100" width="100px;" alt="Nguyễn Hồng Hiệp"/><br /><sub><b>Nguyễn Hồng Hiệp</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=justanoobcoder" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Miho1254"><img src="https://avatars.githubusercontent.com/u/83270073?v=4?s=100" width="100px;" alt="Đặng Quang Hiển"/><br /><sub><b>Đặng Quang Hiển</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Miho1254" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Miho1254"><img src="https://avatars.githubusercontent.com/u/83270073?v=4?s=100" width="100px;" alt="Đặng Quang Hiển"/><br /><sub><b>Đặng Quang Hiển</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Miho1254" title="Documentation">📖</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Miho1254" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zebra2711"><img src="https://avatars.githubusercontent.com/u/89755535?v=4?s=100" width="100px;" alt="Zebra2711"/><br /><sub><b>Zebra2711</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues?q=author%3AZebra2711" title="Bug reports">🐛</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Zebra2711" title="Code">💻</a></td>
     </tr>
   </tbody>

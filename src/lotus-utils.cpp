@@ -6,13 +6,10 @@
  *
  */
 #include "lotus-utils.h"
+#include "lotus-config.h"
 
-#include <fcitx-utils/keysymgen.h>
+#include <cstddef>
 #include <fcitx-utils/utf8.h>
-
-#include <chrono>
-#include <cstdlib>
-#include <cstring>
 
 // Global variables
 fcitx::LotusMode        realMode = fcitx::LotusMode::Smooth;
@@ -34,14 +31,18 @@ std::atomic<bool>       needFallbackCommit{false};
 std::mutex              monitor_mutex;
 std::condition_variable monitor_cv;
 
-std::string             buildSocketPath(const char* base_path_suffix) {
+FCITX_DEFINE_LOG_CATEGORY(lotus, "lotus", fcitx::LogLevel::NoLog);
+
+std::string buildSocketPath(const char* base_path_suffix) {
     const char* username_c = std::getenv("USER");
     std::string path;
     path.reserve(32);
     path += "lotussocket-";
-    path += (username_c ? username_c : "default");
+    path += (username_c ? username_c : "unknown");
     path += '-';
     path += base_path_suffix;
+    const size_t max_socket_path_length = UNIX_PATH_MAX - 1;
+    path.resize(std::min(path.length(), max_socket_path_length));
     return path;
 }
 

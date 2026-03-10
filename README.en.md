@@ -481,25 +481,28 @@ Add this line to file `~/.config/kanata/kanata.kbd`
 
 - **Access:** Right-click the Lotus icon on the system tray to open customization.
 
-| Option                  | Description                                                                                                                    | Default         |
-| :---------------------- | :----------------------------------------------------------------------------------------------------------------------------- | :-------------- |
-| **Typing Mode**         | Select typing mode.                                                                                                            | Uinput (Smooth) |
-| **Input Method**        | Select input method.                                                                                                           | Telex           |
-| **Charset**             | Select character set.                                                                                                          | Unicode         |
-| **Spell Check**         | Enable/disable Vietnamese spell checking.                                                                                      | On              |
-| **Macro**               | Enable/disable shorthand typing.                                                                                               | On              |
-| **Capitalize Macro**    | Enable/disable uppercase shorthand typing.                                                                                     | On              |
-| **Auto non-VN restore** | Enable/disable auto-restore for non-Vietnamese words.                                                                          | On              |
-| **Modern Style**        | Enable/disable modern tone mark placement style _(e.g. oà, *uý instead of òa, *úy)_.                                           | On              |
-| **Free Marking**        | Enable/disable free tone marking.                                                                                              | On              |
-| **Dd Free Style**       | Enable/disable allowing "dd" to produce "đ" when _Auto non-VN restore_ is On                                                   | On              |
-| **Fix Uinput with ack** | Enable/disable fixing Uinput mode with ack.<br/>Recommended when using Chromium-based applications (Chrome, Brave, Edge, ...). | Off             |
-| **Lotus Icons**         | Enable/disable using Lotus icons instead of the default V E icons.                                                             | Off             |
+| Option                  | Description                                           | Default |
+| :---------------------- | :---------------------------------------------------- | :------ |
+| **Charset**             | Select character set.                                 | Unicode |
+| **Spell Check**         | Enable/disable Vietnamese spell checking.             | On      |
+| **Macro**               | Enable/disable shorthand typing.                      | On      |
+| **Capitalize Macro**    | Enable/disable uppercase shorthand typing.            | On      |
+| **Auto non-VN restore** | Enable/disable auto-restore for non-Vietnamese words. | On      |
 
 - Alternatively, you can right-click the Lotus icon in the system tray -> **Input Method Settings** -> Select **Lotus** -> **Configure** (the gear icon in the middle of the _Fcitx Configuration_ interface) to customize some additional options in detail, such as:
   - Macro: click the gear icon next to the _Input Method_ selection row to open the interface for adding or removing macros for the current input method. **Note:** shorthand entries only take effect for the selected input method. If you want to apply them to another input method, switch to that method and re-add the shorthand entries from scratch.
   - Custom Keymap: click the gear icon on the _Custom Keymap_ row to open the keymap customization interface. You can import a keymap from an existing input method or create your own. After customizing, select the **Custom** input method to apply your custom keymap.
   - Mode menu hotkey: by default, this menu uses the `` ` `` key to open the menu in all applications. If your workflow frequently uses this key, or you simply prefer a different key, click the hotkey selection button next to the _Mode menu hotkey_ option to enter your preferred shortcut. You can also click the `+` button to add additional hotkeys if desired.
+  - Some options have been moved from the taskbar menu to Fcitx5 configuration to simplify:
+    | Option | Description | Default |
+    | :---------------------- | :----------------------------------------------------------------------------------------------------------------------------- | :-------------- |
+    | **Mode** | Select typing mode. | Uinput (Smooth) |
+    | **Input Method** | Select input method. | Telex |
+    | **Use oà, uý (Instead Of òa, úy)** | Enable/disable modern tone mark placement style _(e.g. oà, *uý instead of òa, *úy)_. | On |
+    | **Allow Type With More Freedom** | Enable/disable free tone marking. | On |
+    | **Allow dd To Produce đ When Auto Restore Keys With Invalid Words Is On** | Enable/disable allowing "dd" to produce "đ" when _Auto non-VN restore_ is On | On |
+    | **Fix Uinput Mode With Ack** | Enable/disable fixing Uinput mode with ack.<br/>Recommended when using Chromium-based applications (Chrome, Brave, Edge, ...). | Off |
+    | **Use Lotus Status Icons** | Enable/disable using Lotus icons instead of the default V E icons. | Off |
 
 ### 2. Typing mode menu
 
@@ -629,7 +632,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/nhktmdzhg"><img src="https://avatars.githubusercontent.com/u/57983253?v=4?s=100" width="100px;" alt="Nguyen Hoang Ky"/><br /><sub><b>Nguyen Hoang Ky</b></sub></a><br /><a href="#blog-nhktmdzhg" title="Blogposts">📝</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=nhktmdzhg" title="Code">💻</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=nhktmdzhg" title="Documentation">📖</a> <a href="#projectManagement-nhktmdzhg" title="Project Management">📆</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/pulls?q=is%3Apr+reviewed-by%3Anhktmdzhg" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hthienloc"><img src="https://avatars.githubusercontent.com/u/148019203?v=4?s=100" width="100px;" alt="Huỳnh Thiện Lộc"/><br /><sub><b>Huỳnh Thiện Lộc</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues?q=author%3Ahthienloc" title="Bug reports">🐛</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=hthienloc" title="Documentation">📖</a> <a href="#design-hthienloc" title="Design">🎨</a> <a href="#translation-hthienloc" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/justanoobcoder"><img src="https://avatars.githubusercontent.com/u/57614330?v=4?s=100" width="100px;" alt="Nguyễn Hồng Hiệp"/><br /><sub><b>Nguyễn Hồng Hiệp</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=justanoobcoder" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Miho1254"><img src="https://avatars.githubusercontent.com/u/83270073?v=4?s=100" width="100px;" alt="Đặng Quang Hiển"/><br /><sub><b>Đặng Quang Hiển</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Miho1254" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Miho1254"><img src="https://avatars.githubusercontent.com/u/83270073?v=4?s=100" width="100px;" alt="Đặng Quang Hiển"/><br /><sub><b>Đặng Quang Hiển</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Miho1254" title="Documentation">📖</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Miho1254" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zebra2711"><img src="https://avatars.githubusercontent.com/u/89755535?v=4?s=100" width="100px;" alt="Zebra2711"/><br /><sub><b>Zebra2711</b></sub></a><br /><a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues?q=author%3AZebra2711" title="Bug reports">🐛</a> <a href="https://github.com/LotusInputMethod/fcitx5-lotus/commits?author=Zebra2711" title="Code">💻</a></td>
     </tr>
   </tbody>

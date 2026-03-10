@@ -4,12 +4,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  */
-#include "lotus.h"
 #include "lotus-candidates.h"
 #include "lotus-state.h"
 
 #include <fcitx/inputpanel.h>
-#include <fcitx/userinterface.h>
 
 namespace fcitx {
 
@@ -20,6 +18,7 @@ namespace fcitx {
     void EmojiCandidateWord::select(InputContext* inputContext) const {
         FCITX_UNUSED(inputContext);
         state_->ic_->commitString(emojiOutput_);
+        LOTUS_INFO("Emoji committed: " + emojiOutput_);
 
         state_->emojiBuffer_.clear();
         state_->emojiCandidates_.clear();

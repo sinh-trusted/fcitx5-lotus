@@ -8,24 +8,20 @@
 #include "lotus-monitor.h"
 #include "lotus-utils.h"
 
+#include <cstdio>
+#include <thread>
+#include <cstring>
+#include <string>
+
 #include <fcntl.h>
-#include <limits.h>
-#include <linux/limits.h>
 #include <poll.h>
 #include <sys/socket.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
-
-#include <cerrno>
-#include <cstdint>
-#include <cstring>
-#include <mutex>
-#include <thread>
+#include <limits.h>
 
 void deletingTimeMonitor() {
+    LOTUS_INFO("Deleting monitor thread started.");
     while (!stop_flag_monitor.load()) {
         int64_t deleting_since = 0;
 
@@ -44,6 +40,7 @@ void deletingTimeMonitor() {
 
             int64_t rep_start = replacement_start_ms_.load(std::memory_order_acquire);
             if (rep_start > 0 && (current_time - rep_start) > 200) {
+                LOTUS_WARN("Replacement timeout (200ms). Falling back to commit.");
                 int expected_id = replacement_thread_id_.load(std::memory_order_acquire);
                 if (expected_id > 0) {
                     is_deleting_.store(false, std::memory_order_release);
@@ -54,6 +51,7 @@ void deletingTimeMonitor() {
             }
 
             if ((current_time - deleting_since) >= 1500) {
+                LOTUS_WARN("Critical delete timeout (1500ms). Forcing engine reset.");
                 is_deleting_.store(false);
                 needEngineReset.store(true);
                 replacement_start_ms_.store(0, std::memory_order_release);
@@ -66,23 +64,29 @@ void deletingTimeMonitor() {
             }
         }
     }
+    monitor_running.store(false, std::memory_order_relaxed);
+    LOTUS_INFO("Deleting monitor thread stopped.");
 }
 
 void startMonitoringOnce() {
     if (monitor_running.load())
         return;
     std::call_once(monitor_init_flag, []() {
+        LOTUS_INFO("Initializing monitor threads...");
         stop_flag_monitor.store(false);
         std::thread(deletingTimeMonitor).detach();
+        monitor_running.store(true, std::memory_order_relaxed);
     });
 }
 
 void mousePressResetThread() {
     const std::string mouse_socket_path = buildSocketPath("mouse_socket");
+    LOTUS_INFO("Mouse press reset thread started.");
 
     while (!stop_flag_monitor.load(std::memory_order_relaxed)) {
         int sock = socket(AF_UNIX, SOCK_STREAM, 0);
         if (sock < 0) {
+            LOTUS_ERROR("Failed to create socket: " + std::string(strerror(errno)));
             sleep(1);
             continue;
         }
@@ -94,10 +98,12 @@ void mousePressResetThread() {
         socklen_t len = offsetof(struct sockaddr_un, sun_path) + mouse_socket_path.length() + 1;
 
         if (connect(sock, (struct sockaddr*)&addr, len) < 0) {
+            LOTUS_ERROR("Failed to connect to socket: " + std::string(strerror(errno)));
             close(sock);
             sleep(1);
             continue;
         }
+        LOTUS_INFO("Mouse socket connected.");
         mouse_socket_fd.store(sock, std::memory_order_release);
 
         struct pollfd pfd;
@@ -112,6 +118,7 @@ void mousePressResetThread() {
                 ssize_t n = recv(sock, buf, sizeof(buf), 0);
 
                 if (n <= 0) {
+                    LOTUS_ERROR("Mouse socket recv error: " + std::string(strerror(errno)));
                     break;
                 }
 
@@ -123,16 +130,22 @@ void mousePressResetThread() {
                     snprintf(path, sizeof(path), "/proc/%d/cmdline", cred.pid);
                     int fd = open(path, O_RDONLY);
                     if (fd >= 0) {
-                        read(fd, exe_path, sizeof(exe_path) - 1);
+                        if (read(fd, exe_path, sizeof(exe_path) - 1) < 0) {
+                            LOTUS_ERROR("Failed to read cmdline: " + std::string(strerror(errno)));
+                        }
                         close(fd);
                     }
                 }
 
-                if (n > 0 && strcmp(exe_path, "/usr/bin/fcitx5-lotus-server") == 0) {
+                if (strcmp(exe_path, "/usr/bin/fcitx5-lotus-server") == 0) {
+                    LOTUS_DEBUG("Mouse click detected from server. Resetting engine.");
                     needEngineReset.store(true, std::memory_order_relaxed);
                     g_mouse_clicked.store(true, std::memory_order_relaxed);
+                } else {
+                    LOTUS_WARN("Unauthorized connection attempt from: " + std::string(exe_path));
                 }
             } else if (ret < 0 && errno != EINTR) {
+                LOTUS_ERROR("Mouse socket poll error: " + std::string(strerror(errno)));
                 break;
             }
         }

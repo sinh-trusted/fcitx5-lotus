@@ -47,6 +47,10 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm base-devel clang cmake ninja extra-cmake-modules fmt libuv boost git go libinput systemd-libs extra-cmake-modules libx11 qt6-base qt6-wayland
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5-lotus"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5-qt"
       - uses: actions/checkout@v4
         with:
           repository: fcitx/fcitx5
@@ -81,7 +85,7 @@ jobs:
           path: fcitx5-lotus
           submodules: true
       - name: Init CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: cpp,go
           source-root: fcitx5-lotus
@@ -93,4 +97,6 @@ jobs:
         run: |
           ctest --test-dir fcitx5-lotus/build
       - name: CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v4
+        with:
+          checkout_path: fcitx5-lotus

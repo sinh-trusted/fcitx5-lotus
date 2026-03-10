@@ -19,17 +19,11 @@
 #include "emoji.h"
 #include "lotus.h"
 #include <fcitx-config/iniparser.h>
-#include <fcitx-utils/i18n.h>
 #include <fcitx/action.h>
 #include <fcitx/addonfactory.h>
 #include <fcitx/addonmanager.h>
-#include <fcitx/inputcontextproperty.h>
 #include <fcitx/inputmethodengine.h>
 #include <fcitx/instance.h>
-#include <memory>
-#include <string>
-#include <unordered_map>
-#include <vector>
 
 namespace fcitx {
 
@@ -179,6 +173,44 @@ namespace fcitx {
         uintptr_t macroTable() const;
 
         /**
+         * @brief Gets the emoji loader.
+         * @return Reference to emoji loader instance.
+         */
+        EmojiLoader& emojiLoader() {
+            return emojiLoader_;
+        }
+
+      private:
+        Instance*                                        instance_;
+        lotusConfig                                      config_;
+        lotusCustomKeymap                                customKeymap_;
+
+        std::unordered_map<std::string, lotusMacroTable> macroTables_;
+        std::unordered_map<std::string, CGoObject>       macroTableObject_;
+
+        FactoryFor<LotusState>                           factory_;
+        std::vector<std::string>                         imNames_;
+
+        std::unique_ptr<SimpleAction>                    versionAction_;
+        std::unique_ptr<SimpleAction>                    charsetAction_;
+        std::vector<std::unique_ptr<SimpleAction>>       charsetSubAction_;
+        std::unique_ptr<Menu>                            charsetMenu_;
+
+        std::unique_ptr<SimpleAction>                    spellCheckAction_;
+        std::unique_ptr<SimpleAction>                    macroAction_;
+        std::unique_ptr<SimpleAction>                    capitalizeMacroAction_;
+        std::unique_ptr<SimpleAction>                    autoNonVnRestoreAction_;
+        std::vector<SimpleAction*>                       toggleActions_;
+        std::vector<ScopedConnection>                    connections_;
+        CGoObject                                        dictionary_;
+        std::unordered_map<std::string, LotusMode>       appRules_;
+        std::string                                      appRulesPath_;
+        bool                                             isSelectingAppMode_ = false;
+        std::string                                      currentConfigureApp_;
+        LotusMode                                        globalMode_;
+        EmojiLoader                                      emojiLoader_;
+
+        /**
          * @brief Refreshes the bamboo engine with current settings.
          */
         void refreshEngine();
@@ -196,70 +228,27 @@ namespace fcitx {
         }
 
         /**
-         * @brief Updates the mode action UI.
-         * @param ic Current input context.
-         */
-        void updateModeAction(InputContext* ic);
+         * @brief Initialize toggle action
+         * @param action The action to initialize
+         * @param option The option to toggle
+         * @param actionId The action ID
+         * @param iconName The icon name
+         * @param textLong The long text
+         * @param textOnOff The text to display when on/off
+         * @param uiManager The UI manager
+         * 
+        */
+        void initToggleAction(std::unique_ptr<SimpleAction>& action, Option<bool>& option, const std::string& actionId, const std::string& iconName, const std::string& textLong,
+                              const std::string& textOnOff, UserInterfaceManager& uiManager);
 
         /**
-         * @brief Updates the spell check action UI.
-         * @param ic Current input context.
+         * @brief Update toggle action
+         * @param ic The input context
+         * @param action The action to update
+         * @param option The option to toggle
+         * @param textOnOff The text to display when on/off
          */
-        void updateSpellAction(InputContext* ic);
-
-        /**
-         * @brief Updates the macro action UI.
-         * @param ic Current input context.
-         */
-        void updateMacroAction(InputContext* ic);
-
-        /**
-         * @brief Updates the capitalize macro action UI.
-         * @param ic Current input context.
-         */
-        void updateCapitalizeMacroAction(InputContext* ic);
-
-        /**
-         * @brief Updates the auto non-VN restore action UI.
-         * @param ic Current input context.
-         */
-        void updateAutoNonVnRestoreAction(InputContext* ic);
-
-        /**
-         * @brief Updates the modern style action UI.
-         * @param ic Current input context.
-         */
-        void updateModernStyleAction(InputContext* ic);
-
-        /**
-         * @brief Updates the free marking action UI.
-         * @param ic Current input context.
-         */
-        void updateFreeMarkingAction(InputContext* ic);
-
-        /**
-         * @brief Updates the dd free style action UI.
-         * @param ic Current input context.
-         */
-        void updateDdFreeStyleAction(InputContext* ic);
-
-        /**
-         * @brief Updates the fix uinput with ACK action UI.
-         * @param ic Current input context.
-         */
-        void updateFixUinputWithAckAction(InputContext* ic);
-
-        /**
-         * @brief Updates the Lotus icons toggle action UI.
-         * @param ic Current input context.
-         */
-        void updateLotusIconsAction(InputContext* ic);
-
-        /**
-         * @brief Updates the input method action UI.
-         * @param ic Current input context.
-         */
-        void updateInputMethodAction(InputContext* ic);
+        void updateAction(InputContext* ic, std::unique_ptr<SimpleAction>& action, Option<bool>& option, const std::string& textOnOff);
 
         /**
          * @brief Updates the charset action UI.
@@ -294,14 +283,6 @@ namespace fcitx {
         void closeAppModeMenu();
 
         /**
-         * @brief Gets the emoji loader.
-         * @return Reference to emoji loader instance.
-         */
-        EmojiLoader& emojiLoader() {
-            return emojiLoader_;
-        }
-
-        /**
          * @brief Sets the current input mode.
          * @param mode The mode to set.
          * @param ic Current input context.
@@ -314,46 +295,6 @@ namespace fcitx {
          * @return Name of current program
          */
         std::string getProgramName(InputContext* ic);
-
-      private:
-        Instance*                                        instance_;
-        lotusConfig                                      config_;
-        lotusCustomKeymap                                customKeymap_;
-
-        std::unordered_map<std::string, lotusMacroTable> macroTables_;
-        std::unordered_map<std::string, CGoObject>       macroTableObject_;
-
-        FactoryFor<LotusState>                           factory_;
-        std::vector<std::string>                         imNames_;
-
-        std::unique_ptr<SimpleAction>                    inputMethodAction_;
-        std::vector<std::unique_ptr<SimpleAction>>       inputMethodSubAction_;
-        std::unique_ptr<Menu>                            inputMethodMenu_;
-        std::unique_ptr<SimpleAction>                    modeAction_;
-        std::unique_ptr<Menu>                            modeMenu_;
-        std::vector<std::unique_ptr<SimpleAction>>       modeSubAction_;
-        std::unique_ptr<SimpleAction>                    charsetAction_;
-        std::vector<std::unique_ptr<SimpleAction>>       charsetSubAction_;
-        std::unique_ptr<Menu>                            charsetMenu_;
-
-        std::unique_ptr<SimpleAction>                    spellCheckAction_;
-        std::unique_ptr<SimpleAction>                    macroAction_;
-        std::unique_ptr<SimpleAction>                    capitalizeMacroAction_;
-        std::unique_ptr<SimpleAction>                    autoNonVnRestoreAction_;
-        std::unique_ptr<SimpleAction>                    modernStyleAction_;
-        std::unique_ptr<SimpleAction>                    freeMarkingAction_;
-        std::unique_ptr<SimpleAction>                    ddFreeStyleAction_;
-        std::unique_ptr<SimpleAction>                    fixUinputWithAckAction_;
-        std::unique_ptr<SimpleAction>                    lotusIconsAction_;
-        std::unique_ptr<SimpleAction>                    versionAction_;
-        std::vector<ScopedConnection>                    connections_;
-        CGoObject                                        dictionary_;
-        std::unordered_map<std::string, LotusMode>       appRules_;
-        std::string                                      appRulesPath_;
-        bool                                             isSelectingAppMode_ = false;
-        std::string                                      currentConfigureApp_;
-        LotusMode                                        globalMode_;
-        EmojiLoader                                      emojiLoader_;
     };
 
     /**

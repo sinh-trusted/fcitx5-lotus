@@ -25,9 +25,9 @@ namespace fcitx::lotus {
         for (const auto& preset : presets_) {
             comboPreset_->addItem(preset.first);
         }
-        btnLoadPreset_ = new QPushButton(_("Import from existing keymap"), this);
+        btnLoadPreset_ = new QPushButton(_("Import From Existing Keymap"), this);
 
-        presetLayout->addWidget(new QLabel(_("Original input method"), this));
+        presetLayout->addWidget(new QLabel(_("Original Input Method"), this));
         presetLayout->addWidget(comboPreset_);
         presetLayout->addWidget(btnLoadPreset_);
         presetLayout->addStretch();
@@ -63,7 +63,7 @@ namespace fcitx::lotus {
         tableWidget_->setEditTriggers(QAbstractItemView::NoEditTriggers);
         mainLayout->addWidget(tableWidget_);
 
-        btnRemove_ = new QPushButton(_("Remove selection entry"), this);
+        btnRemove_ = new QPushButton(_("Remove Selection Entry"), this);
         mainLayout->addWidget(btnRemove_);
 
         connect(btnAdd_, &QPushButton::clicked, this, &KeymapEditor::onAddClicked);
