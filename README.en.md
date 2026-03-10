@@ -185,8 +185,10 @@ sudo zypper removerepo home_iamnanoka
 
 ## 📦 Installation
 
+<sub>💡 Click beside the badge to expand the instructions.</sub>
+
 <details>
-<summary><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></a></summary>
 <br>
 
 Currently, AUR has 3 installation packages to choose from:
@@ -214,7 +216,7 @@ paru -S fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></a></summary>
 <br>
 
 ```bash
@@ -229,7 +231,7 @@ sudo apt update && sudo apt install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></a></summary>
 <br>
 
 ```bash
@@ -244,7 +246,7 @@ sudo apt update && sudo apt install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></a></summary>
 <br>
 
 ```bash
@@ -258,7 +260,7 @@ sudo dnf install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></a></summary>
 <br>
 
 ```bash
@@ -272,7 +274,7 @@ sudo zypper install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></a></summary>
 <br>
 
 Add fcitx5-lotus input to `flake.nix`:
@@ -317,7 +319,7 @@ Rebuild the system to install.
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></a></summary>
 <br>
 
 Download `.deb` or `.rpm` files directly from [GitHub Releases](https://github.com/LotusInputMethod/fcitx5-lotus/releases/latest):
@@ -335,7 +337,7 @@ sudo rpm -i fcitx5-lotus-*.rpm
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></summary>
+<summary><a href="#installation"><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></a></summary>
 <br>
 
 > **IMPORTANT RECOMMENDATION:**
@@ -662,8 +664,10 @@ Clicking the mouse or touching the touchpad while typing will automatically rese
 
 ## 🗑️ Uninstallation
 
+<sub>💡 Click beside the badge to expand the instructions.</sub>
+
 <details>
-<summary><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></a></summary>
 <br>
 
 You can use `pacman` (recommended), `yay`, or `paru` to uninstall:
@@ -685,7 +689,7 @@ paru -Rns fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></a></summary>
 <br>
 
 ```bash
@@ -695,7 +699,7 @@ sudo apt remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></a></summary>
 <br>
 
 ```bash
@@ -705,7 +709,7 @@ sudo apt remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></a></summary>
 <br>
 
 ```bash
@@ -715,7 +719,7 @@ sudo dnf remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></a></summary>
 <br>
 
 ```bash
@@ -725,7 +729,7 @@ sudo zypper remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></a></summary>
 <br>
 
 Delete (or comment out) the `services.fcitx5-lotus` and `inputs` lines in the config file, then rebuild the system. NixOS will clean up automatically.
@@ -733,7 +737,7 @@ Delete (or comment out) the `services.fcitx5-lotus` and `inputs` lines in the co
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></a></summary>
 <br>
 
 Uninstall based on your distribution:
@@ -756,7 +760,7 @@ sudo zypper remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></summary>
+<summary><a href="#uninstallation"><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></a></summary>
 <br>
 
 Go back to the built source code directory and run:

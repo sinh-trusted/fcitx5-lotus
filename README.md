@@ -185,8 +185,10 @@ sudo zypper removerepo home_iamnanoka
 
 ## 📦 Cài đặt
 
+<sub>💡 Bấm vào phần bên cạnh badge để mở rộng hướng dẫn.</sub>
+
 <details>
-<summary><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></a></summary>
 <br>
 
 Hiện tại AUR có 3 gói cài đặt để bạn lựa chọn:
@@ -214,7 +216,7 @@ paru -S fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></a></summary>
 <br>
 
 ```bash
@@ -229,7 +231,7 @@ sudo apt update && sudo apt install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></a></summary>
 <br>
 
 ```bash
@@ -244,7 +246,7 @@ sudo apt update && sudo apt install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></a></summary>
 <br>
 
 ```bash
@@ -258,7 +260,7 @@ sudo dnf install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></a></summary>
 <br>
 
 ```bash
@@ -272,7 +274,7 @@ sudo zypper install fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></a></summary>
 <br>
 
 Thêm input của fcitx5-lotus vào `flake.nix`:
@@ -317,7 +319,7 @@ Rebuild lại system để cài đặt.
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></a></summary>
 <br>
 
 Tải file `.deb` hoặc `.rpm` trực tiếp từ [GitHub Releases](https://github.com/LotusInputMethod/fcitx5-lotus/releases/latest):
@@ -335,7 +337,7 @@ sudo rpm -i fcitx5-lotus-*.rpm
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></summary>
+<summary><a href="#cài-đặt"><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></a></summary>
 <br>
 
 > **KHUYẾN CÁO QUAN TRỌNG:**
@@ -661,8 +663,10 @@ Nhấp chuột hoặc chạm touchpad trong khi gõ sẽ tự động đặt l�
 
 ## 🗑️ Gỡ cài đặt
 
+<sub>💡 Bấm vào phần bên cạnh badge để mở rộng hướng dẫn.</sub>
+
 <details>
-<summary><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="25"></a></summary>
 <br>
 
 Bạn có thể dùng `pacman` (khuyên dùng), `yay` hoặc `paru` để gỡ cài đặt:
@@ -684,7 +688,7 @@ paru -Rns fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white" alt="Debian" height="25"></a></summary>
 <br>
 
 ```bash
@@ -694,7 +698,7 @@ sudo apt remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" height="25"></a></summary>
 <br>
 
 ```bash
@@ -704,7 +708,7 @@ sudo apt remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/Fedora-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora" height="25"></a></summary>
 <br>
 
 ```bash
@@ -714,7 +718,7 @@ sudo dnf remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/openSUSE-73BA42?style=for-the-badge&logo=opensuse&logoColor=white" alt="openSUSE" height="25"></a></summary>
 <br>
 
 ```bash
@@ -724,7 +728,7 @@ sudo zypper remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS" height="25"></a></summary>
 <br>
 
 Xóa (hoặc comment) dòng `services.fcitx5-lotus` và `inputs` trong file config, sau đó rebuild lại system. NixOS sẽ tự dọn dẹp.
@@ -732,7 +736,7 @@ Xóa (hoặc comment) dòng `services.fcitx5-lotus` và `inputs` trong file conf
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/GitHub_Releases-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Releases" height="25"></a></summary>
 <br>
 
 Gỡ cài đặt tùy theo distro bạn đang sử dụng:
@@ -755,7 +759,7 @@ sudo zypper remove fcitx5-lotus
 </details>
 
 <details>
-<summary><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></summary>
+<summary><a href="#gỡ-cài-đặt"><img src="https://img.shields.io/badge/Source-000000?style=for-the-badge&logo=github&logoColor=white" alt="Source" height="25"></a></summary>
 <br>
 
 Vào lại thư mục source code đã build và chạy:
