@@ -5,7 +5,7 @@ set(fcitx_lotus_sources
   lotus-candidates.cpp
   lotus-utils.cpp
   lotus-monitor.cpp
-  "${PROJECT_SOURCE_DIR}/data/emoji/emoji_data.cpp"
+  emoji.cpp
 )
 
 add_library(lotus MODULE ${fcitx_lotus_sources})
@@ -20,7 +20,6 @@ target_link_libraries(lotus
 
 target_include_directories(lotus PRIVATE
     ${PROJECT_BINARY_DIR}
-    ${PROJECT_SOURCE_DIR}/data/emoji
 )
 install(TARGETS lotus DESTINATION "${CMAKE_INSTALL_LIBDIR}/fcitx5")
 
