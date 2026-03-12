@@ -16,17 +16,27 @@ if [ "$1" = "configure" ]; then
     fi
     systemd-sysusers || true
     
-    echo -e "${blue}--- Cấu hình Lotus ---${all_off}"
-    echo -e "${bold}Hướng dẫn sau cài đặt:${all_off}"
-    echo -e "1. Kích hoạt Server cho user của bạn:"
-    echo -e "   ${blue}sudo systemctl enable --now fcitx5-lotus-server@\$(whoami).service${all_off}"
-    echo ""
-    echo -e "2. Cấu hình Fcitx5:"
-    echo -e "   - Mở 'Fcitx5 Configuration', thêm bộ gõ ${green}Lotus${all_off}."
-    echo ""
-    echo -e "3. Lưu ý cho Wayland (KDE):"
-    echo -e "   - Hãy chọn 'Fcitx 5' trong phần Virtual Keyboard của hệ thống."
-    echo "------------------------------------------------"
+    if [ -z "$2" ]; then
+        printf "%b\n" "${blue}--- Cấu hình Lotus ---${all_off}"
+        printf "%b\n" "${bold}Hướng dẫn sau cài đặt:${all_off}"
+        printf "%b\n" "1. Kích hoạt Server cho user của bạn:"
+        printf "%b\n" "   ${blue}sudo systemctl enable --now fcitx5-lotus-server@\$(whoami).service${all_off}"
+        echo ""
+        printf "%b\n" "2. Cấu hình Fcitx5:"
+        printf "%b\n" "   - Mở 'Fcitx5 Configuration', thêm bộ gõ ${green}Lotus${all_off}."
+        echo ""
+        printf "%b\n" "3. Lưu ý cho Wayland (KDE):"
+        printf "%b\n" "   - Hãy chọn 'Fcitx 5' trong phần Virtual Keyboard của hệ thống."
+        echo "------------------------------------------------"
+    else
+        printf "%b\n" "${blue}--- Cấu hình Lotus ---${all_off}"
+        printf "%b\n" "${bold}Hướng dẫn sau cập nhật:${all_off}"
+        printf "%b\n" "1. Khởi động lại Server cho user của bạn:"
+        printf "%b\n" "   ${blue}sudo systemctl restart fcitx5-lotus-server@\$(whoami).service${all_off}"
+        echo ""
+        printf "%b\n" "2. Cấu hình Fcitx5:"
+        printf "%b\n" "   - Mở 'Fcitx5 Configuration', nhấn restart để khởi động lại."
+    fi
 fi
 
 #DEBHELPER#
