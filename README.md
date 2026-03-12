@@ -275,6 +275,8 @@ sudo make install PREFIX=/usr/local
 
 Sau khi cài đặt xong, bạn cần thực hiện các bước sau để bật bộ gõ fcitx5-lotus:
 
+> **💡 Tự động hoá:** Nếu bạn cài qua **Debian/Ubuntu** (`.deb`), post-install script sẽ tự hỏi bạn từng bước 1–3 bên dưới với lựa chọn `[y/n]`. Bạn chỉ cần xác nhận là xong — không cần chạy thủ công.
+
 ### 1. Bật Lotus Server
 
 Server giúp bộ gõ tương tác với hệ thống tốt hơn (đặc biệt là gửi phím xóa và sửa lỗi).

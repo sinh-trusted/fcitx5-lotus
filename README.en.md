@@ -275,6 +275,8 @@ sudo make install PREFIX=/usr/local
 
 After installation, you need to follow these steps to enable the fcitx5-lotus input method:
 
+> **💡 Automated:** If you install via **Debian/Ubuntu** (`.deb`), the post-install script will interactively walk you through steps 1–3 below with `[y/n]` prompts. Just confirm each step — no manual commands needed.
+
 ### 1. Enable Lotus Server
 
 The server helps the input method interact better with the system (especially sending backspace and fixing errors).
