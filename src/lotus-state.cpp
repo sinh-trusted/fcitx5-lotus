@@ -351,8 +351,7 @@ namespace fcitx {
                 } else if (currentSym == FcitxKey_Return && !emojiBuffer_.empty()) {
                     ic_->commitString(emojiBuffer_);
                     emojiBuffer_.clear();
-                    ic_->inputPanel().reset();
-                    ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
+                    updateEmojiPreedit();
                     keyEvent.filterAndAccept();
                 } else {
                     keyEvent.forward();
@@ -384,20 +383,6 @@ namespace fcitx {
         }
     }
 
-    void LotusState::selectEmojiCandidate(int index) {
-        if (index >= 0 && index < static_cast<int>(emojiCandidates_.size())) {
-            EmojiEntry entry = emojiCandidates_[index];
-            ic_->commitString(entry.output);
-            LOTUS_INFO("Emoji committed: " + entry.output);
-
-            engine_->emojiLoader().recordHistory(entry);
-
-            emojiBuffer_.clear();
-            emojiCandidates_.clear();
-            ic_->inputPanel().reset();
-            ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
-        }
-    }
 
     void LotusState::updateEmojiPreedit() {
         if (emojiBuffer_.empty()) {
@@ -434,7 +419,7 @@ namespace fcitx {
                 size_t localIndex = (i % 9) + 1;
                 Text   displayLabel;
                 if (emojiBuffer_.empty()) {
-                    displayLabel.append(std::to_string(localIndex) + ": " + emojiCandidates_[i].output + " (" + _("History") + ")", TextFormatFlag::NoFlag);
+                    displayLabel.append(std::to_string(localIndex) + ": " + emojiCandidates_[i].output, TextFormatFlag::NoFlag);
                 } else {
                     displayLabel.append(std::to_string(localIndex) + ": " + emojiCandidates_[i].trigger + " " + emojiCandidates_[i].output, TextFormatFlag::NoFlag);
                 }

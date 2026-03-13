@@ -27,7 +27,7 @@ namespace fcitx {
 
         state_->ic_->inputPanel().reset();
         state_->ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
-        state_->ic_->updatePreedit();
+        state_->updateEmojiPreedit();
     }
 
     // AppModeCandidateWord implementation
