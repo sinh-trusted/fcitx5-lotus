@@ -25,6 +25,7 @@
 #include <fstream>
 
 #include <fcntl.h>
+#include <sstream>
 
 namespace fcitx {
     constexpr const char* CharsetActionPrefix = "lotus-charset-";
@@ -426,7 +427,7 @@ namespace fcitx {
                     break;
                 }
                 case FcitxKey_r: {
-                    if (appRules_.erase(currentConfigureApp_) > 0) {
+                    if (appRules_.erase(currentConfigureApp_) > 0 && !isStartsWith(currentConfigureApp_, "ctx_")) {
                         saveAppRules();
                     }
                     selectedMode  = globalMode_;
@@ -461,7 +462,9 @@ namespace fcitx {
                 LOTUS_INFO("Selected mode: " + modeEnumToString(selectedMode));
                 if (selectedMode != LotusMode::Emoji) {
                     appRules_[currentConfigureApp_] = selectedMode;
-                    saveAppRules();
+                    if (!isStartsWith(currentConfigureApp_, "ctx_")) {
+                        saveAppRules();
+                    }
                 }
                 selectionMade = true;
             }
@@ -590,7 +593,9 @@ namespace fcitx {
         file << "# Lotus Per-App Configuration\n";
         file << "# 0 = Off, 1 = Uinput (Smooth), 2 = Uinput (Slow), 3 = Uinput (Hardcore), 4 = Surrounding Text, 5 = Preedit, 6 = Emoji Picker\n";
         for (const auto& pair : appRules_) {
-            file << pair.first << "=" << static_cast<int>(pair.second) << "\n";
+            if (!isStartsWith(pair.first, "ctx_")) {
+                file << pair.first << "=" << static_cast<int>(pair.second) << "\n";
+            }
         }
         file.close();
     }
@@ -627,7 +632,9 @@ namespace fcitx {
             return [this, mode, cleanup](InputContext* ic) {
                 if (mode != LotusMode::Emoji) {
                     appRules_[currentConfigureApp_] = mode;
-                    saveAppRules();
+                    if (!isStartsWith(currentConfigureApp_, "ctx_")) {
+                        saveAppRules();
+                    }
                 }
 
                 cleanup(ic);
@@ -649,7 +656,7 @@ namespace fcitx {
         candidateList->append(std::make_unique<AppModeCandidateWord>(getLabel(LotusMode::Off, _("[e] OFF")), applyMode(LotusMode::Off)));
 
         candidateList->append(std::make_unique<AppModeCandidateWord>(Text(_("[r] Default Typing")), [this, cleanup](InputContext* ic) {
-            if (appRules_.erase(currentConfigureApp_) > 0) {
+            if (appRules_.erase(currentConfigureApp_) > 0 && !isStartsWith(currentConfigureApp_, "ctx_")) {
                 saveAppRules();
             }
             setMode(globalMode_, ic);
@@ -725,9 +732,17 @@ namespace fcitx {
     }
 
     std::string LotusEngine::getProgramName(InputContext* ic) {
+        if (ic == nullptr) {
+            return "unknown-app";
+        }
         std::string programName = ic->program();
-        if (programName.empty())
-            programName = "unknown-app";
+        if (programName.empty() || programName == "wayland" || programName == "x11") {
+            // Fallback: InputContext address-based resolution
+            // This ensures at least per-window separation.
+            std::ostringstream oss;
+            oss << "ctx_" << static_cast<const void*>(ic);
+            programName = oss.str();
+        }
         return programName;
     }
 } // namespace fcitx
