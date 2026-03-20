@@ -196,6 +196,7 @@ namespace fcitx {
 
         lotusMacroTable          macroTables_;
         CGoObject                macroTableObject_;
+        lotusAppRules            appRulesTables_;
 
         FactoryFor<LotusState>   factory_;
         std::vector<std::string> imNames_;
@@ -215,11 +216,8 @@ namespace fcitx {
         std::vector<SimpleAction*>                 toggleActions_;
         std::vector<ScopedConnection>              connections_;
         CGoObject                                  dictionary_;
-        std::unordered_map<std::string, LotusMode> appRules_;
-        std::string                                appRulesPath_;
         bool                                       isSelectingAppMode_ = false;
         std::string                                currentConfigureApp_;
-        LotusMode                                  globalMode_;
         FCITX_ADDON_DEPENDENCY_LOADER(emoji, instance_->addonManager());
         std::unique_ptr<EmojiLoader> emojiLoader_;
 
@@ -282,7 +280,21 @@ namespace fcitx {
         /**
          * @brief Saves application-specific mode rules.
          */
-        void saveAppRules();
+        void saveAppRules() const;
+
+        /**
+         * @brief Get application-specific mode rules
+         * @return Current application-specific mode rules
+        */
+
+        LotusMode getAppRule(const std::string& appName) const;
+
+        /**
+         * @brief Set application-specific mode rules
+         * @param appName The application name
+         * @param mode The mode to set
+         */
+        void setAppRule(const std::string& appName, LotusMode mode);
 
         /**
          * @brief Shows the application mode selection menu.
