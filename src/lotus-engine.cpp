@@ -597,7 +597,9 @@ namespace fcitx {
                 std::string  mode = line.substr(delimiterPos + 1);
                 lotusAppRule rule;
                 rule.app.setValue(app);
-                rule.mode.setValue(std::stoi(mode));
+                try {
+                    rule.mode.setValue(std::stoi(mode));
+                } catch (const std::exception& e) { rule.mode.setValue(0); }
                 rules.push_back(std::move(rule));
             }
         }
