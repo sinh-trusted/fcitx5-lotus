@@ -24,6 +24,7 @@
 #include <fcitx-utils/utf8.h>
 
 #include <atomic>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 
@@ -96,6 +97,8 @@ namespace fcitx {
     }
 
     LotusEngine::LotusEngine(Instance* instance) : instance_(instance), factory_([this](InputContext& ic) { return new LotusState(this, &ic); }) { //NOLINT
+        const char* desktop = std::getenv("XDG_CURRENT_DESKTOP");
+        isGnome_ = desktop && std::string(desktop).find("GNOME") != std::string::npos;
         startMonitoringOnce();
         Init();
         {
@@ -781,7 +784,7 @@ namespace fcitx {
         switch (realMode) {
             case LotusMode::Off: return _("Lotus - Off");
             case LotusMode::Emoji: return "😄";
-            default: return "vi";
+            default: return isGnome_ ? "vi" : "🪷";
         }
     }
 
