@@ -98,7 +98,7 @@ namespace fcitx {
 
     LotusEngine::LotusEngine(Instance* instance) : instance_(instance), factory_([this](InputContext& ic) { return new LotusState(this, &ic); }) { //NOLINT
         const char* desktop = std::getenv("XDG_CURRENT_DESKTOP");
-        isGnome_ = desktop && std::string(desktop).find("GNOME") != std::string::npos;
+        isGnome_            = (desktop != nullptr) && std::string(desktop).find("GNOME") != std::string::npos;
         startMonitoringOnce();
         Init();
         {
