@@ -323,6 +323,7 @@ class ModeManagerPage(QWidget):
         self.dbus = dbus_handler
         self.app_rules = {}
         self.original_app_rules = {}
+        self.original_global_mode = ""
         self.selected_app = None
         self._icon_cache = {}
         self._setup_ui()
@@ -338,12 +339,12 @@ class ModeManagerPage(QWidget):
         self.sidebar_widget.setFixedWidth(240)
         self.sidebar_layout = QVBoxLayout(self.sidebar_widget)
         self.sidebar_layout.setContentsMargins(15, 20, 15, 20)
-        self.sidebar_layout.setSpacing(10)
-
         self.app_search = QLineEdit()
         self.app_search.setPlaceholderText(_("Search applications..."))
         self.app_search.textChanged.connect(self._filter_apps)
         self.sidebar_layout.addWidget(self.app_search)
+
+        self.sidebar_layout.setSpacing(10)
 
         self.app_list = QListWidget()
         self.app_list.setIconSize(QSize(24, 24))
@@ -458,6 +459,7 @@ class ModeManagerPage(QWidget):
         if idx >= 0:
             self.combo_global_mode.setCurrentIndex(idx)
         self.combo_global_mode.blockSignals(False)
+        self.original_global_mode = mode_str
         
         self._populate_app_list()
         self.original_app_rules = self.app_rules.copy()
@@ -650,8 +652,12 @@ class ModeManagerPage(QWidget):
         if hasattr(main_win, "on_changed"):
             main_win.on_changed()
 
-    def is_modified_from_default(self):
-        return self.app_rules != self.original_app_rules
+    def is_modified(self):
+        """Returns True if the current state differs from the initial loaded state."""
+        return (
+            self.app_rules != self.original_app_rules
+            or self.combo_global_mode.currentText() != self.original_global_mode
+        )
 
     def on_import(self):
         """Imports app rules from a TSV file."""
@@ -659,7 +665,7 @@ class ModeManagerPage(QWidget):
             self,
             _("Import Application Rules"),
             "",
-            _("Tab-separated (*.tsv *.txt);;All files (*)"),
+            _("Tab-separated (*.tsv);;Text files (*.txt);;All files (*)"),
         )
         if not path:
             return
@@ -734,7 +740,7 @@ class ModeManagerPage(QWidget):
             self,
             _("Export Application Rules"),
             "lotus-app-rules.tsv",
-            _("Tab-separated (*.tsv *.txt);;All files (*)"),
+            _("Tab-separated (*.tsv);;Text files (*.txt);;All files (*)"),
         )
         if not path:
             return
@@ -762,6 +768,7 @@ class ModeManagerPage(QWidget):
             
             self.dbus.set_sub_config_list("app_rules", "Rules", data)
             self.original_app_rules = self.app_rules.copy()
+            self.original_global_mode = self.combo_global_mode.currentText()
 
             if not quiet:
                 QMessageBox.information(self, _("Success"), _("Application rules saved successfully."))

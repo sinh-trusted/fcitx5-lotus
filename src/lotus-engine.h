@@ -160,9 +160,7 @@ namespace fcitx {
          * @brief Gets the custom keymap configuration.
          * @return Reference to custom keymap.
          */
-        const auto& customKeymap() const {
-            return customKeymap_;
-        }
+        const lotusCustomKeymap& customKeymap() const;
 
         /**
          * @brief Gets the dictionary handle.
@@ -193,6 +191,7 @@ namespace fcitx {
         Instance*                instance_;
         lotusConfig              config_;
         lotusCustomKeymap        customKeymap_;
+        lotusCustomKeymap        emptyCustomKeymap_;
 
         lotusMacroTable          macroTables_;
         CGoObject                macroTableObject_;
@@ -212,6 +211,7 @@ namespace fcitx {
         std::unique_ptr<SimpleAction>              macroAction_;
         std::unique_ptr<SimpleAction>              capitalizeMacroAction_;
         std::unique_ptr<SimpleAction>              autoNonVnRestoreAction_;
+        std::unique_ptr<SimpleAction>              enableDictionaryAction_;
         std::unique_ptr<SimpleAction>              settingsAction_;
         std::vector<SimpleAction*>                 toggleActions_;
         std::vector<ScopedConnection>              connections_;

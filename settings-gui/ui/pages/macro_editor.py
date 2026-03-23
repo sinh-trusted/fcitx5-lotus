@@ -40,6 +40,7 @@ class MacroEditorPage(BaseEditorPage):
     ):
         super().__init__(parent)
         self.dbus = dbus_handler
+        self.initial_state = {}
         self._setup_ui()
         self.load_data()
 
@@ -62,6 +63,15 @@ class MacroEditorPage(BaseEditorPage):
         toggles_layout.addWidget(self.cb_enable)
         toggles_layout.addWidget(self.cb_capitalize)
         toggles_layout.addStretch()
+
+        self.search_input = QLineEdit()
+        self.search_input.setPlaceholderText(_("Search macros..."))
+        self.search_input.setClearButtonEnabled(True)
+        self.search_input.setFixedWidth(200)
+        self.search_input.textChanged.connect(self.on_search_changed)
+        toggles_layout.addWidget(QLabel(_("Search:")))
+        toggles_layout.addWidget(self.search_input)
+
         toggles_card.content_layout.addLayout(toggles_layout)
         main_layout.addWidget(toggles_card)
 
@@ -93,16 +103,6 @@ class MacroEditorPage(BaseEditorPage):
         input_layout.addWidget(self.input_val, 2)
         input_layout.addWidget(self.btn_add)
         content_layout.addLayout(input_layout)
-
-        # 1b. Search Bar
-        search_layout = QHBoxLayout()
-        self.search_input = QLineEdit()
-        self.search_input.setPlaceholderText(_("Search macros..."))
-        self.search_input.setClearButtonEnabled(True)
-        self.search_input.textChanged.connect(self.on_search_changed)
-        search_layout.addWidget(QLabel(_("Search:")))
-        search_layout.addWidget(self.search_input)
-        content_layout.addLayout(search_layout)
 
         # 2. Table Area
         self.table = QTableWidget(0, 2)
@@ -163,7 +163,8 @@ class MacroEditorPage(BaseEditorPage):
             data = self.dbus.get_sub_config_list("lotus-macro", "Macro")
             for item in data:
                 self.upsert_row(item.get("Key", ""), item.get("Value", ""), sort=False)
-            self.sort_invalid_to_top()
+            self.on_search_changed()
+            self.initial_state = self._get_current_state()
         finally:
             self.blockSignals(False)
 
@@ -187,6 +188,26 @@ class MacroEditorPage(BaseEditorPage):
             or not self.cb_capitalize.isChecked()
         )
 
+    def is_modified(self):
+        """Returns True if the current state differs from the initial loaded state."""
+        return self._get_current_state() != self.initial_state
+
+    def _get_current_state(self):
+        """Captures the current UI state for comparison."""
+        data = []
+        for row in range(self.table.rowCount()):
+            key_item = self.table.item(row, 0)
+            val_item = self.table.item(row, 1)
+            if key_item and key_item.text():
+                data.append(
+                    {"Key": key_item.text(), "Value": val_item.text() if val_item else ""}
+                )
+        return {
+            "data": data,
+            "EnableMacro": self.cb_enable.isChecked(),
+            "CapitalizeMacro": self.cb_capitalize.isChecked(),
+        }
+
     def save_data(self, quiet=False):
         # Save global macro settings via DBus
         config_data = self.dbus.get_config()
@@ -209,6 +230,7 @@ class MacroEditorPage(BaseEditorPage):
             )
 
         self.dbus.set_sub_config_list("lotus-macro", "Macro", data)
+        self.initial_state = self._get_current_state()
         if not quiet:
             QMessageBox.information(self, _("Success"), _("Macros saved successfully."))
 
@@ -219,7 +241,7 @@ class MacroEditorPage(BaseEditorPage):
                 self.table.item(row, 1).setText(value)
                 self._apply_row_highlight(row, key)
                 if sort:
-                    self.sort_invalid_to_top()
+                    self.on_search_changed()  # Re-apply filter
                 self.on_search_changed()  # Re-apply filter
                 self.update_button_states()
                 return
@@ -231,8 +253,7 @@ class MacroEditorPage(BaseEditorPage):
         self.table.setItem(row, 1, QTableWidgetItem(value))
         self._apply_row_highlight(row, key)
         if sort:
-            self.sort_invalid_to_top()
-        self.on_search_changed()  # Re-apply filter
+            self.on_search_changed()  # Re-apply filter
         self.update_button_states()
         self._on_item_changed()
 
@@ -417,7 +438,7 @@ class MacroEditorPage(BaseEditorPage):
             self,
             _("Export Macros"),
             "lotus-macro.tsv",
-            _("Tab-separated (*.tsv *.txt);;All files (*)"),
+            _("Tab-separated (*.tsv);;Text files (*.txt);;All files (*)"),
         )
         if not path:
             return
