@@ -236,17 +236,16 @@ namespace fcitx {
     }
 
     void LotusState::handleEmojiMode(KeyEvent& keyEvent) {
-        const KeySym currentSym = keyEvent.rawKey().sym();
-        bool isCtrlBackspace = isBackspace(currentSym) &&
-                               (keyEvent.rawKey().states() & KeyState::Ctrl);
+        const KeySym currentSym      = keyEvent.rawKey().sym();
+        bool         isCtrlBackspace = isBackspace(currentSym) && (keyEvent.rawKey().states() & KeyState::Ctrl);
 
         if (keyEvent.key().hasModifier() && !isCtrlBackspace) {
             keyEvent.forward();
             return;
         }
 
-        auto         baseList   = ic_->inputPanel().candidateList();
-        auto         commonList = std::dynamic_pointer_cast<CommonCandidateList>(baseList);
+        auto baseList   = ic_->inputPanel().candidateList();
+        auto commonList = std::dynamic_pointer_cast<CommonCandidateList>(baseList);
         if (commonList && currentSym >= FcitxKey_1 && currentSym <= FcitxKey_9) {
             int offset      = currentSym - FcitxKey_1;
             int globalIndex = (commonList->currentPage() * commonList->pageSize()) + offset;
