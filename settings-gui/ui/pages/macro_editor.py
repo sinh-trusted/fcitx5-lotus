@@ -61,8 +61,18 @@ class MacroEditorPage(BaseEditorPage):
         self.cb_capitalize = QCheckBox(_("Capitalize Macro"))
         self.cb_enable.toggled.connect(self._on_item_changed)
         self.cb_capitalize.toggled.connect(self._on_item_changed)
+        
+        cap_layout = QHBoxLayout()
+        cap_layout.setSpacing(5)
+        cap_layout.addWidget(self.cb_capitalize)
+        
+        help_icon = QLabel()
+        help_icon.setPixmap(QIcon.fromTheme("help-about").pixmap(16, 16))
+        help_icon.setToolTip(_("Automatically match expansion case to trigger key case:<br>- 'kg' → 'khô gà' (all lowercase)<br>- 'KG' → 'KHÔ GÀ' (all uppercase)<br>- 'Kg' → 'khô gà' (original macro case)"))
+        cap_layout.addWidget(help_icon)
+        
         toggles_layout.addWidget(self.cb_enable)
-        toggles_layout.addWidget(self.cb_capitalize)
+        toggles_layout.addLayout(cap_layout)
         toggles_layout.addStretch()
 
         self.search_input = QLineEdit()
@@ -94,8 +104,9 @@ class MacroEditorPage(BaseEditorPage):
         
         # Format Inputs
         fmt_container = QWidget()
-        fmt_vbox = QVBoxLayout(fmt_container)
-        fmt_vbox.setContentsMargins(0, 5, 0, 0)
+        fmt_hbox = QHBoxLayout(fmt_container)
+        fmt_hbox.setContentsMargins(0, 5, 0, 0)
+        fmt_hbox.setSpacing(20)
         
         # Time Format
         time_layout = QHBoxLayout()
@@ -138,8 +149,8 @@ class MacroEditorPage(BaseEditorPage):
         date_layout.addWidget(QLabel(_("Date Format:")))
         date_layout.addWidget(self.input_date_format, 1)
         
-        fmt_vbox.addLayout(time_layout)
-        fmt_vbox.addLayout(date_layout)
+        fmt_hbox.addLayout(time_layout)
+        fmt_hbox.addLayout(date_layout)
         
         dynamic_layout.addWidget(fmt_container)
         
@@ -419,7 +430,6 @@ class MacroEditorPage(BaseEditorPage):
         is_invalid = self._is_invalid_macro(key)
         
         # Validation feedback for input field
-        # Validation feedback for input field
         if is_invalid:
             self.input_key.setStyleSheet("color: red;")
             self.input_key.setToolTip(_("Warning: Macro key should not contain spaces or special characters."))
@@ -462,8 +472,8 @@ class MacroEditorPage(BaseEditorPage):
         try:
             with open(path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
-        except Exception as e:
-            QMessageBox.warning(self, "Error", _("Cannot open file for reading: {}").format(e))
+        except (IOError, OSError, UnicodeDecodeError) as e:
+            QMessageBox.warning(self, _("Error"), _("Cannot open file for reading: {}").format(e))
             return
 
         imported = skipped = 0
@@ -532,5 +542,5 @@ class MacroEditorPage(BaseEditorPage):
                 _("Export Complete"),
                 _("Exported {} entries to:\n{}").format(self.table.rowCount(), path),
             )
-        except Exception as e:
-            QMessageBox.warning(self, "Error", _("Cannot open file for writing: {}").format(e))
+        except (IOError, OSError, UnicodeDecodeError) as e:
+            QMessageBox.warning(self, _("Error"), _("Cannot open file for writing: {}").format(e))

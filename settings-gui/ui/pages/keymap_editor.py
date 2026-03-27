@@ -102,7 +102,7 @@ PRESETS = {
         ("(", "A_Ă"),
         ("d", "D_Đ"),
     ],
-    "Microslop layout": [
+    "Microsoft layout": [
         ("8", "DauSac"),
         ("5", "DauHuyen"),
         ("6", "DauHoi"),
@@ -496,8 +496,8 @@ class KeymapEditorPage(BaseEditorPage):
         try:
             with open(path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
-        except Exception as e:
-            QMessageBox.warning(self, "Error", _("Cannot open file for reading: {}").format(e))
+        except (IOError, OSError, UnicodeDecodeError) as e:
+            QMessageBox.warning(self, _("Error"), _("Cannot open file for reading: {}").format(e))
             return
         imported = skipped = 0
         confirmed = False
@@ -584,5 +584,5 @@ class KeymapEditorPage(BaseEditorPage):
                 _("Export Complete"),
                 _("Exported {} entries to:\n{}").format(self.table.rowCount(), path),
             )
-        except Exception as e:
-            QMessageBox.warning(self, "Error", _("Cannot open file for writing: {}").format(e))
+        except (IOError, OSError, UnicodeDecodeError) as e:
+            QMessageBox.warning(self, _("Error"), _("Cannot open file for writing: {}").format(e))

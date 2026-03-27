@@ -353,7 +353,7 @@ class DictEditorPage(BaseEditorPage):
             with open(path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
         except (IOError, OSError, UnicodeDecodeError) as e:
-            QMessageBox.warning(self, "Error", _("Cannot open file for reading: {}").format(e))
+            QMessageBox.warning(self, _("Error"), _("Cannot open file for reading: {}").format(e))
             return
 
         imported = 0
@@ -416,4 +416,4 @@ class DictEditorPage(BaseEditorPage):
                 _("Exported {} words to:\n{}").format(len(self.words), path),
             )
         except (IOError, OSError, UnicodeDecodeError) as e:
-            QMessageBox.warning(self, "Error", _("Cannot open file for writing: {}").format(e))
+            QMessageBox.warning(self, _("Error"), _("Cannot open file for writing: {}").format(e))
