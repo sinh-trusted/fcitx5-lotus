@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 09:46+0700\n"
+"POT-Creation-Date: 2026-03-28 17:31+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,106 +17,114 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/lotus-config.h:177
+#: src/lotus-config.h:195
 msgid "Key"
 msgstr ""
 
-#: src/lotus-config.h:177
+#: src/lotus-config.h:195
 msgid "Value"
 msgstr ""
 
-#: src/lotus-config.h:181 src/lotus-config.h:214 src/lotus-engine.cpp:151
-#: src/lotus-engine.cpp:302
+#: src/lotus-config.h:199 src/lotus-config.h:234 src/lotus-engine.cpp:151
+#: src/lotus-engine.cpp:304
 msgid "Macro"
 msgstr ""
 
-#: src/lotus-config.h:185 src/lotus-config.h:215
+#: src/lotus-config.h:203 src/lotus-config.h:235
 msgid "Custom Keymap"
 msgstr ""
 
-#: src/lotus-config.h:187
+#: src/lotus-config.h:205
 msgid "App"
 msgstr ""
 
-#: src/lotus-config.h:187 src/lotus-config.h:198
+#: src/lotus-config.h:205 src/lotus-config.h:216
 msgid "Mode"
 msgstr ""
 
-#: src/lotus-config.h:190
+#: src/lotus-config.h:208
 msgid "Rules"
 msgstr ""
 
-#: src/lotus-config.h:200
+#: src/lotus-config.h:218
 msgid "Input Method"
 msgstr ""
 
-#: src/lotus-config.h:201
+#: src/lotus-config.h:219
 msgid "Output Charset"
 msgstr ""
 
-#: src/lotus-config.h:202 src/lotus-engine.cpp:150
+#: src/lotus-config.h:220 src/lotus-engine.cpp:150
 msgid "Enable Spell Check"
 msgstr ""
 
-#: src/lotus-config.h:202 src/lotus-engine.cpp:151
+#: src/lotus-config.h:220 src/lotus-engine.cpp:151
 msgid "Enable Macro"
 msgstr ""
 
-#: src/lotus-config.h:203 src/lotus-engine.cpp:152 src/lotus-engine.cpp:303
+#: src/lotus-config.h:221 src/lotus-engine.cpp:152 src/lotus-engine.cpp:305
 msgid "Capitalize Macro"
 msgstr ""
 
-#: src/lotus-config.h:204
+#: src/lotus-config.h:222
 msgid ""
 "Auto capitalize after sentence-ending punctuation (. ! ? Enter) "
 "(experimental)"
 msgstr ""
 
-#: src/lotus-config.h:205
+#: src/lotus-config.h:223
 msgid "Double Space to Period (experimental)"
 msgstr ""
 
-#: src/lotus-config.h:206
+#: src/lotus-config.h:224
 msgid "Type w to Produce ư"
 msgstr ""
 
-#: src/lotus-config.h:206 src/lotus-engine.cpp:154
+#: src/lotus-config.h:224 src/lotus-engine.cpp:154
 msgid "Auto Restore Keys With Invalid Words"
 msgstr ""
 
-#: src/lotus-config.h:207
+#: src/lotus-config.h:225
 msgid "Use oà, uý (Instead Of òa, úy)"
 msgstr ""
 
-#: src/lotus-config.h:208
+#: src/lotus-config.h:226
 msgid "Allow Type With More Freedom"
 msgstr ""
 
-#: src/lotus-config.h:209
+#: src/lotus-config.h:227
 msgid "Allow dd To Produce đ When Auto Restore Keys With Invalid Words Is On"
 msgstr ""
 
-#: src/lotus-config.h:210
+#: src/lotus-config.h:228
 msgid "Fix Uinput Mode With Ack"
 msgstr ""
 
-#: src/lotus-config.h:211
+#: src/lotus-config.h:229
 msgid "Use Lotus Status Icons"
 msgstr ""
 
-#: src/lotus-config.h:212 src/lotus-engine.cpp:156
+#: src/lotus-config.h:230 src/lotus-engine.cpp:156
 msgid "Enable Custom Dictionary"
 msgstr ""
 
-#: src/lotus-config.h:213
+#: src/lotus-config.h:231
 msgid "Enable Custom Keymap"
 msgstr ""
 
-#: src/lotus-config.h:216
+#: src/lotus-config.h:232
+msgid "Time Format ($TIME in macro)"
+msgstr ""
+
+#: src/lotus-config.h:233
+msgid "Date Format ($DATE in macro)"
+msgstr ""
+
+#: src/lotus-config.h:236
 msgid "App Rules"
 msgstr ""
 
-#: src/lotus-config.h:217
+#: src/lotus-config.h:237
 msgid "Mode Menu Hotkey"
 msgstr ""
 
@@ -124,15 +132,15 @@ msgstr ""
 msgid "Charset"
 msgstr ""
 
-#: src/lotus-engine.cpp:150 src/lotus-engine.cpp:301
+#: src/lotus-engine.cpp:150 src/lotus-engine.cpp:303
 msgid "Spell Check"
 msgstr ""
 
-#: src/lotus-engine.cpp:155 src/lotus-engine.cpp:304
+#: src/lotus-engine.cpp:155 src/lotus-engine.cpp:306
 msgid "Auto Non-VN Restore"
 msgstr ""
 
-#: src/lotus-engine.cpp:156 src/lotus-engine.cpp:305
+#: src/lotus-engine.cpp:156 src/lotus-engine.cpp:307
 msgid "Custom Dictionary"
 msgstr ""
 
@@ -140,51 +148,51 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/lotus-engine.cpp:772
+#: src/lotus-engine.cpp:774
 msgid "App: "
 msgstr ""
 
-#: src/lotus-engine.cpp:773
+#: src/lotus-engine.cpp:775
 msgid "[1] Uinput (Smooth)"
 msgstr ""
 
-#: src/lotus-engine.cpp:774
+#: src/lotus-engine.cpp:776
 msgid "[2] Uinput (Slow)"
 msgstr ""
 
-#: src/lotus-engine.cpp:775
+#: src/lotus-engine.cpp:777
 msgid "[3] Uinput (Hardcore)"
 msgstr ""
 
-#: src/lotus-engine.cpp:776
+#: src/lotus-engine.cpp:778
 msgid "[4] Surrounding Text"
 msgstr ""
 
-#: src/lotus-engine.cpp:777
+#: src/lotus-engine.cpp:779
 msgid "[q] Preedit"
 msgstr ""
 
-#: src/lotus-engine.cpp:778
+#: src/lotus-engine.cpp:780
 msgid "[w] Emoji Picker"
 msgstr ""
 
-#: src/lotus-engine.cpp:779
+#: src/lotus-engine.cpp:781
 msgid "[e] OFF"
 msgstr ""
 
-#: src/lotus-engine.cpp:781
+#: src/lotus-engine.cpp:783
 msgid "[r] Default Typing"
 msgstr ""
 
-#: src/lotus-engine.cpp:793
+#: src/lotus-engine.cpp:795
 msgid "Type"
 msgstr ""
 
-#: src/lotus-engine.cpp:848
+#: src/lotus-engine.cpp:850
 msgid "Lotus - Off"
 msgstr ""
 
-#: src/lotus-state.cpp:240
+#: src/lotus-state.cpp:243
 msgid "Page "
 msgstr ""
 
@@ -203,70 +211,6 @@ msgid ""
 msgstr ""
 
 msgid "Lotus Wrapper For Fcitx"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:64
-#, python-brace-format
-msgid "Version {}"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:79
-msgid ""
-"A state-of-the-art Vietnamese input method engine for Linux, designed for "
-"speed, stability, and a premium user experience."
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:96
-msgid "Report Bug"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:101
-msgid "Request Feature"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:111
-msgid "Export Debug Logs"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:123
-msgid "DEVELOPED BY"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:157
-msgid "Licensed under the GNU General Public License v3.0"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:167
-msgid "Save Debug Log"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:206 settings-gui/ui/pages/backup.py:183
-#: settings-gui/ui/pages/backup.py:296 settings-gui/ui/main_window.py:252
-msgid "Success"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:206
-msgid "Debug logs exported successfully to:\n"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:208 settings-gui/ui/pages/backup.py:188
-#: settings-gui/ui/pages/backup.py:242 settings-gui/ui/pages/backup.py:314
-#: settings-gui/ui/pages/dict_editor.py:247
-#: settings-gui/ui/pages/mode_manager.py:704
-#: settings-gui/ui/pages/mode_manager.py:787
-msgid "Error"
-msgstr ""
-
-#: settings-gui/ui/pages/about.py:208
-msgid "Failed to export logs:\n"
-msgstr ""
-
-#: settings-gui/ui/pages/dynamic_settings.py:117
-msgid "Failed to load configuration."
-msgstr ""
-
-#: settings-gui/ui/pages/dynamic_settings.py:165
-msgid "No interface settings available yet."
 msgstr ""
 
 #: settings-gui/ui/pages/backup.py:52
@@ -288,7 +232,7 @@ msgid "Main Settings"
 msgstr ""
 
 #: settings-gui/ui/pages/backup.py:71 settings-gui/ui/pages/backup.py:217
-#: settings-gui/ui/pages/macro_editor.py:52 settings-gui/ui/main_window.py:175
+#: settings-gui/ui/pages/macro_editor.py:53 settings-gui/ui/main_window.py:175
 msgid "Macros"
 msgstr ""
 
@@ -332,8 +276,26 @@ msgstr ""
 msgid "Lotus Backup (*.lotusbak);;All Files (*)"
 msgstr ""
 
+#: settings-gui/ui/pages/backup.py:183 settings-gui/ui/pages/backup.py:296
+#: settings-gui/ui/pages/about.py:206 settings-gui/ui/main_window.py:252
+msgid "Success"
+msgstr ""
+
 #: settings-gui/ui/pages/backup.py:183
 msgid "Backup exported successfully to:\n"
+msgstr ""
+
+#: settings-gui/ui/pages/backup.py:188 settings-gui/ui/pages/backup.py:242
+#: settings-gui/ui/pages/backup.py:314 settings-gui/ui/pages/dict_editor.py:247
+#: settings-gui/ui/pages/dict_editor.py:356
+#: settings-gui/ui/pages/dict_editor.py:419
+#: settings-gui/ui/pages/keymap_editor.py:500
+#: settings-gui/ui/pages/keymap_editor.py:588
+#: settings-gui/ui/pages/macro_editor.py:476
+#: settings-gui/ui/pages/macro_editor.py:546
+#: settings-gui/ui/pages/mode_manager.py:705
+#: settings-gui/ui/pages/mode_manager.py:788 settings-gui/ui/pages/about.py:208
+msgid "Error"
 msgstr ""
 
 #: settings-gui/ui/pages/backup.py:188
@@ -388,7 +350,7 @@ msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:90
 #: settings-gui/ui/pages/keymap_editor.py:262
-#: settings-gui/ui/pages/macro_editor.py:72
+#: settings-gui/ui/pages/macro_editor.py:83
 msgid "Search:"
 msgstr ""
 
@@ -399,8 +361,8 @@ msgstr ""
 #: settings-gui/ui/pages/dict_editor.py:109
 #: settings-gui/ui/pages/dict_editor.py:320
 #: settings-gui/ui/pages/keymap_editor.py:301
-#: settings-gui/ui/pages/macro_editor.py:95
-#: settings-gui/ui/pages/macro_editor.py:357
+#: settings-gui/ui/pages/macro_editor.py:171
+#: settings-gui/ui/pages/macro_editor.py:452
 msgid "Add"
 msgstr ""
 
@@ -410,9 +372,14 @@ msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:135
 #: settings-gui/ui/pages/keymap_editor.py:328
-#: settings-gui/ui/pages/mode_manager.py:374
-#: settings-gui/ui/pages/macro_editor.py:125
+#: settings-gui/ui/pages/macro_editor.py:201
+#: settings-gui/ui/pages/mode_manager.py:375
 msgid "Remove"
+msgstr ""
+
+#: settings-gui/ui/pages/dict_editor.py:247
+#, python-brace-format
+msgid "Failed to save dictionary: {}"
 msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:274
@@ -434,15 +401,15 @@ msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:356
 #: settings-gui/ui/pages/keymap_editor.py:500
-#: settings-gui/ui/pages/macro_editor.py:381
+#: settings-gui/ui/pages/macro_editor.py:476
 #, python-brace-format
 msgid "Cannot open file for reading: {}"
 msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:369
 #: settings-gui/ui/pages/keymap_editor.py:520
-#: settings-gui/ui/pages/mode_manager.py:734
-#: settings-gui/ui/pages/macro_editor.py:402
+#: settings-gui/ui/pages/macro_editor.py:497
+#: settings-gui/ui/pages/mode_manager.py:735
 msgid "Confirm Import"
 msgstr ""
 
@@ -454,8 +421,8 @@ msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:390
 #: settings-gui/ui/pages/keymap_editor.py:551
-#: settings-gui/ui/pages/mode_manager.py:753
-#: settings-gui/ui/pages/macro_editor.py:419
+#: settings-gui/ui/pages/macro_editor.py:514
+#: settings-gui/ui/pages/mode_manager.py:754
 msgid "Import Complete"
 msgstr ""
 
@@ -466,8 +433,8 @@ msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:397
 #: settings-gui/ui/pages/keymap_editor.py:559
-#: settings-gui/ui/pages/mode_manager.py:761
-#: settings-gui/ui/pages/macro_editor.py:426
+#: settings-gui/ui/pages/macro_editor.py:521
+#: settings-gui/ui/pages/mode_manager.py:762
 msgid "Export"
 msgstr ""
 
@@ -481,16 +448,16 @@ msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:404
 #: settings-gui/ui/pages/keymap_editor.py:567
-#: settings-gui/ui/pages/mode_manager.py:695
-#: settings-gui/ui/pages/mode_manager.py:769
-#: settings-gui/ui/pages/macro_editor.py:433
+#: settings-gui/ui/pages/macro_editor.py:528
+#: settings-gui/ui/pages/mode_manager.py:696
+#: settings-gui/ui/pages/mode_manager.py:770
 msgid "Tab-separated (*.tsv);;Text files (*.txt);;All files (*)"
 msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:415
 #: settings-gui/ui/pages/keymap_editor.py:584
-#: settings-gui/ui/pages/mode_manager.py:783
-#: settings-gui/ui/pages/macro_editor.py:447
+#: settings-gui/ui/pages/macro_editor.py:542
+#: settings-gui/ui/pages/mode_manager.py:784
 msgid "Export Complete"
 msgstr ""
 
@@ -503,9 +470,17 @@ msgstr ""
 
 #: settings-gui/ui/pages/dict_editor.py:419
 #: settings-gui/ui/pages/keymap_editor.py:588
-#: settings-gui/ui/pages/macro_editor.py:451
+#: settings-gui/ui/pages/macro_editor.py:546
 #, python-brace-format
 msgid "Cannot open file for writing: {}"
+msgstr ""
+
+#: settings-gui/ui/pages/dynamic_settings.py:117
+msgid "Failed to load configuration."
+msgstr ""
+
+#: settings-gui/ui/pages/dynamic_settings.py:165
+msgid "No interface settings available yet."
 msgstr ""
 
 #: settings-gui/ui/pages/keymap_editor.py:242
@@ -558,7 +533,7 @@ msgid "Import Keymap"
 msgstr ""
 
 #: settings-gui/ui/pages/keymap_editor.py:491
-#: settings-gui/ui/pages/macro_editor.py:373
+#: settings-gui/ui/pages/macro_editor.py:468
 msgid "Tab-separated (*.tsv *.txt);;All files (*)"
 msgstr ""
 
@@ -567,7 +542,7 @@ msgid "Merge imported entries?"
 msgstr ""
 
 #: settings-gui/ui/pages/keymap_editor.py:552
-#: settings-gui/ui/pages/macro_editor.py:420
+#: settings-gui/ui/pages/macro_editor.py:515
 #, python-brace-format
 msgid "Imported {} entries, skipped {} invalid lines."
 msgstr ""
@@ -581,48 +556,108 @@ msgid "Export Keymap"
 msgstr ""
 
 #: settings-gui/ui/pages/keymap_editor.py:585
-#: settings-gui/ui/pages/macro_editor.py:448
+#: settings-gui/ui/pages/macro_editor.py:543
 #, python-brace-format
 msgid ""
 "Exported {} entries to:\n"
 "{}"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:45
-msgid "Default"
+#: settings-gui/ui/pages/macro_editor.py:71
+msgid ""
+"Automatically match expansion case to trigger key case:<br>- 'kg' → 'khô gà' "
+"(all lowercase)<br>- 'KG' → 'KHÔ GÀ' (all uppercase)<br>- 'Kg' → 'khô gà' "
+"(original macro case)"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:46
-msgid "Off"
+#: settings-gui/ui/pages/macro_editor.py:79
+msgid "Search macros..."
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:47
-msgid "Uinput (Smooth)"
+#: settings-gui/ui/pages/macro_editor.py:100
+msgid ""
+"Macros can use dynamic placeholders: $TIME (current time) and $DATE (current "
+"date)."
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:48
-msgid "Uinput (Slow)"
+#: settings-gui/ui/pages/macro_editor.py:122
+msgid "None (Do not replace $TIME)"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:49
-msgid "Uinput (Hardcore)"
+#: settings-gui/ui/pages/macro_editor.py:128
+msgid "Time Format:"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:50
-msgid "Surrounding Text"
+#: settings-gui/ui/pages/macro_editor.py:143
+msgid "None (Do not replace $DATE)"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:51
-msgid "Preedit"
+#: settings-gui/ui/pages/macro_editor.py:149
+msgid "Date Format:"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:52
-msgid "Emoji Picker"
+#: settings-gui/ui/pages/macro_editor.py:163
+msgid "Abbreviation (e.g. kg)"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:167
+msgid "Full text (e.g. khô gà)"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:176
+msgid "Key:"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:178
+msgid "Value:"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:185
+msgid "Abbreviation"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:185
+msgid "Expanded Text"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:203
+msgid "Move Up"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:205
+msgid "Move Down"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:366
+#: settings-gui/ui/pages/macro_editor.py:435
+msgid "Warning: Macro key should not contain spaces or special characters."
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:449
+msgid "Update"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:466
+msgid "Import Macros"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:499
+msgid ""
+"The current macro list is not empty. Imported entries will be merged. "
+"Continue?"
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:521
+msgid "The macro list is empty, nothing to export."
+msgstr ""
+
+#: settings-gui/ui/pages/macro_editor.py:526
+msgid "Export Macros"
 msgstr ""
 
 #: settings-gui/ui/pages/mode_manager.py:118
 #: settings-gui/ui/pages/mode_manager.py:131
-#: settings-gui/ui/pages/mode_manager.py:373
+#: settings-gui/ui/pages/mode_manager.py:374
 msgid "Add Application"
 msgstr ""
 
@@ -666,127 +701,107 @@ msgstr ""
 msgid "Selected:"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:362
+#: settings-gui/ui/pages/mode_manager.py:363
 msgid "Search applications..."
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:395 settings-gui/ui/main_window.py:170
+#: settings-gui/ui/pages/mode_manager.py:396 settings-gui/ui/main_window.py:170
 msgid "Applications"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:402
+#: settings-gui/ui/pages/mode_manager.py:403
 msgid "Global Default Mode:"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:424
+#: settings-gui/ui/pages/mode_manager.py:425
 msgid "Select an application"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:654
+#: settings-gui/ui/pages/mode_manager.py:655
 msgid "Confirm Remove"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:655
+#: settings-gui/ui/pages/mode_manager.py:656
 msgid "Are you sure you want to remove rules for this application?"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:693
+#: settings-gui/ui/pages/mode_manager.py:694
 msgid "Import Application Rules"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:704
+#: settings-gui/ui/pages/mode_manager.py:705
 msgid "Cannot open file for reading:"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:735
+#: settings-gui/ui/pages/mode_manager.py:736
 msgid "Merge imported application rules?"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:754
+#: settings-gui/ui/pages/mode_manager.py:755
 #, python-brace-format
 msgid "Imported {} rules, skipped {} invalid lines."
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:761
+#: settings-gui/ui/pages/mode_manager.py:762
 msgid "The application rules list is empty, nothing to export."
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:767
+#: settings-gui/ui/pages/mode_manager.py:768
 msgid "Export Application Rules"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:784
+#: settings-gui/ui/pages/mode_manager.py:785
 #, python-brace-format
 msgid ""
 "Exported {} rules to:\n"
 "{}"
 msgstr ""
 
-#: settings-gui/ui/pages/mode_manager.py:787
+#: settings-gui/ui/pages/mode_manager.py:788
 msgid "Cannot open file for writing:"
 msgstr ""
 
-#: settings-gui/ui/pages/macro_editor.py:68
-msgid "Search macros..."
+#: settings-gui/ui/pages/about.py:64
+#, python-brace-format
+msgid "Version {}"
 msgstr ""
 
-#: settings-gui/ui/pages/macro_editor.py:87
-msgid "Abbreviation (e.g. kg)"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:91
-msgid "Full text (e.g. khô gà)"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:100
-msgid "Key:"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:102
-msgid "Value:"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:109
-msgid "Abbreviation"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:109
-msgid "Expanded Text"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:127
-msgid "Move Up"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:129
-msgid "Move Down"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:270
-#: settings-gui/ui/pages/macro_editor.py:340
-msgid "Warning: Macro key should not contain spaces or special characters."
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:354
-msgid "Update"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:371
-msgid "Import Macros"
-msgstr ""
-
-#: settings-gui/ui/pages/macro_editor.py:404
+#: settings-gui/ui/pages/about.py:79
 msgid ""
-"The current macro list is not empty. Imported entries will be merged. "
-"Continue?"
+"A state-of-the-art Vietnamese input method engine for Linux, designed for "
+"speed, stability, and a premium user experience."
 msgstr ""
 
-#: settings-gui/ui/pages/macro_editor.py:426
-msgid "The macro list is empty, nothing to export."
+#: settings-gui/ui/pages/about.py:96
+msgid "Report Bug"
 msgstr ""
 
-#: settings-gui/ui/pages/macro_editor.py:431
-msgid "Export Macros"
+#: settings-gui/ui/pages/about.py:101
+msgid "Request Feature"
+msgstr ""
+
+#: settings-gui/ui/pages/about.py:111
+msgid "Export Debug Logs"
+msgstr ""
+
+#: settings-gui/ui/pages/about.py:123
+msgid "DEVELOPED BY"
+msgstr ""
+
+#: settings-gui/ui/pages/about.py:157
+msgid "Licensed under the GNU General Public License v3.0"
+msgstr ""
+
+#: settings-gui/ui/pages/about.py:167
+msgid "Save Debug Log"
+msgstr ""
+
+#: settings-gui/ui/pages/about.py:206
+msgid "Debug logs exported successfully to:\n"
+msgstr ""
+
+#: settings-gui/ui/pages/about.py:208
+msgid "Failed to export logs:\n"
 msgstr ""
 
 #: settings-gui/ui/components.py:46 settings-gui/ui/components.py:56

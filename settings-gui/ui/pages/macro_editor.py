@@ -115,10 +115,10 @@ class MacroEditorPage(BaseEditorPage):
         self.input_time_format.currentIndexChanged.connect(self._on_item_changed)
         
         time_presets = [
-            ("%H:%M", _("15:04 (24h)")),
-            ("%H:%M:%S", _("15:04:05 (24h)")),
-            ("%I:%M %p", _("03:04 PM")),
-            ("%I:%M:%S %p", _("03:04:05 PM")),
+            ("%H:%M", "15:04 (24h)"),
+            ("%H:%M:%S", "15:04:05 (24h)"),
+            ("%I:%M %p", "03:04 PM"),
+            ("%I:%M:%S %p", "03:04:05 PM"),
             ("", _("None (Do not replace $TIME)")),
         ]
         for fmt, desc in time_presets:
@@ -135,11 +135,11 @@ class MacroEditorPage(BaseEditorPage):
         self.input_date_format.currentIndexChanged.connect(self._on_item_changed)
 
         date_presets = [
-            ("%d/%m/%Y", _("dd/MM/yyyy")),
-            ("%d/%m/%y", _("dd/MM/yy")),
-            ("%m/%d/%Y", _("MM/dd/yyyy")),
-            ("%Y-%m-%d", _("yyyy-MM-dd")),
-            ("%y-%m-%d", _("yy-MM-dd")),
+            ("%d/%m/%Y", "dd/MM/yyyy"),
+            ("%d/%m/%y", "dd/MM/yy"),
+            ("%m/%d/%Y", "MM/dd/yyyy"),
+            ("%Y-%m-%d", "yyyy-MM-dd"),
+            ("%y-%m-%d", "yy-MM-dd"),
             ("", _("None (Do not replace $DATE)")),
         ]
         for fmt, desc in date_presets:
