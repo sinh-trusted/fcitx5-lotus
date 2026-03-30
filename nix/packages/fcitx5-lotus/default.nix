@@ -17,14 +17,14 @@
 }:
 stdenv.mkDerivation rec {
   pname = "fcitx5-lotus";
-  version = "1.6.1";
+  version = "1.7.0";
 
   src = fetchFromGitHub {
     owner = "LotusInputMethod";
     repo = "fcitx5-lotus";
     rev = "v${version}";
     fetchSubmodules = true;
-    sha256 = "sha256-70K7Mha8s3xYb8KfFuo1gDc4pX5TNBDKmtrZ4G+mrMI=";
+    sha256 = "sha256-JymMgfqcmzHZLCjKNWvw23gczdMuEYVe+1+kt0Z0xQ0=";
   };
 
   nativeBuildInputs = [
@@ -69,7 +69,7 @@ stdenv.mkDerivation rec {
   postPatch = ''
     substituteInPlace src/lotus-monitor.cpp \
       --replace-fail 'strcmp(exe_path, "/usr/bin/fcitx5-lotus-server") == 0' \
-                '(strncmp(exe_path, "/nix/store/", 22) == 0 && strlen(exe_path) >= 22 && strcmp(exe_path + strlen(exe_path) - 22, "/bin/fcitx5-lotus-server") == 0)'
+                '(strncmp(exe_path, "/nix/store/", 11) == 0 && strlen(exe_path) >= 24 && strcmp(exe_path + strlen(exe_path) - 24, "/bin/fcitx5-lotus-server") == 0)'
     substituteInPlace server/lotus-server.cpp \
       --replace-fail 'strcmp(exe_path, "/usr/bin/fcitx5") == 0' \
                 '(strncmp(exe_path, "/nix/store/", 11) == 0 && strlen(exe_path) >= 11 && strcmp(exe_path + strlen(exe_path) - 11, "/bin/fcitx5") == 0)'
